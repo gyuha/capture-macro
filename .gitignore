@@ -1,0 +1,12 @@
+capture
+venv
+*/__pycache__
+__pycache__
+.pyenv
+
+tmp.mkv
+default-s6.json
+
+
+build
+dist
