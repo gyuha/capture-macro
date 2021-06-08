@@ -1,168 +1,11 @@
 [
     {
-        "label": "QtCore",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "QtGui",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "QtWidgets",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "QtCore",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "uic",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "QtCore",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "QtGui",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "QtWidgets",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "QtCore",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "QtWidgets",
-        "importPath": "PyQt5",
-        "description": "PyQt5",
-        "isExtraImport": true,
-        "detail": "PyQt5",
-        "documentation": {}
-    },
-    {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "os",
         "description": "os",
         "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
-        "documentation": {}
-    },
-    {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "io",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "io",
-        "description": "io",
-        "detail": "io",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
-        "label": "signal",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "signal",
-        "description": "signal",
-        "detail": "signal",
         "documentation": {}
     },
     {
@@ -230,12 +73,38 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "PyQt5.QtCore",
+        "description": "PyQt5.QtCore",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "site",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "site",
         "description": "site",
         "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
         "documentation": {}
     },
     {
@@ -375,6 +244,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
         "label": "QtSingleton",
         "importPath": "libs.qtSingleton",
         "description": "libs.qtSingleton",
@@ -392,6 +269,22 @@
         "documentation": {}
     },
     {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
         "label": "glob",
         "kind": 6,
         "isExtraImport": true,
@@ -406,6 +299,15 @@
         "description": "imageToPdfWorker",
         "isExtraImport": true,
         "detail": "imageToPdfWorker",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
         "documentation": {}
     },
     {
@@ -434,6 +336,62 @@
         "documentation": {}
     },
     {
+        "label": "QtCore",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "uic",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "QtCore",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "QtGui",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "QtWidgets",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "QtCore",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "QtWidgets",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
         "label": "QIcon",
         "importPath": "PyQt5.QtGui",
         "description": "PyQt5.QtGui",
@@ -451,6 +409,14 @@
     },
     {
         "label": "QPixmap",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "*",
         "importPath": "PyQt5.QtGui",
         "description": "PyQt5.QtGui",
         "isExtraImport": true,
@@ -496,60 +462,6 @@
         "description": "libs.imagesPathToPdf",
         "isExtraImport": true,
         "detail": "libs.imagesPathToPdf",
-        "documentation": {}
-    },
-    {
-        "label": "Ui_MainWindow",
-        "kind": 6,
-        "importPath": ".qt_for_python.uic.mainUi",
-        "description": ".qt_for_python.uic.mainUi",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1328, 817)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
-        "detail": ".qt_for_python.uic.mainUi",
-        "documentation": {}
-    },
-    {
-        "label": "AdbKey",
-        "kind": 6,
-        "importPath": "adb.adbKey",
-        "description": "adb.adbKey",
-        "peekOfCode": "class AdbKey(Enum):\n    KEYCODE_UNKNOWN = \"KEYCODE_UNKNOWN\"\n    KEYCODE_MENU = \"KEYCODE_MENU\"\n    KEYCODE_SOFT_RIGHT = \"KEYCODE_SOFT_RIGHT\"\n    KEYCODE_HOME = \"KEYCODE_HOME\"\n    KEYCODE_BACK = \"KEYCODE_BACK\"\n    KEYCODE_CALL = \"KEYCODE_CALL\"\n    KEYCODE_ENDCALL = \"KEYCODE_ENDCALL\"\n    KEYCODE_0 = \"KEYCODE_0\"\n    KEYCODE_1 = \"KEYCODE_1\"",
-        "detail": "adb.adbKey",
-        "documentation": {}
-    },
-    {
-        "label": "send_adb_key",
-        "kind": 2,
-        "importPath": "adb.adbKey",
-        "description": "adb.adbKey",
-        "peekOfCode": "def send_adb_key(keymap):\n    adbPath = os.path.realpath('./bin/scrcpy/adb.exe')\n    cmd = [adbPath, \"shell\", \"input\", \"keyevent\", keymap]\n    try:\n        subprocess.run(cmd, shell=True)\n    except subprocess.CalledProcessError:\n        print('connect error')",
-        "detail": "adb.adbKey",
-        "documentation": {}
-    },
-    {
-        "label": "get_screen",
-        "kind": 2,
-        "importPath": "adb.capture",
-        "description": "adb.capture",
-        "peekOfCode": "def get_screen(filename, toJpg=True):\n    print(filename)\n    cmd = \"adb  shell screencap -p\"\n    try:\n        process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)\n        binary_screenshot = process.stdout.read()\n        binary_screenshot = binary_screenshot.replace(b'\\r\\n', b'\\n')\n        if toJpg:\n            filename = filename.replace('.png', '.jpg')\n            img = Image.open(io.BytesIO(binary_screenshot))",
-        "detail": "adb.capture",
-        "documentation": {}
-    },
-    {
-        "label": "imageCrop",
-        "kind": 2,
-        "importPath": "adb.capture",
-        "description": "adb.capture",
-        "peekOfCode": "def imageCrop(filename, x, y, width, height, toJpg=False):\n    try:\n        img = Image.open(filename)\n        area = (x, y, width, height)\n        croppedImg = img.crop(area)\n        img.close()\n        if toJpg:\n            os.remove(filename)\n            filename = filename.replace('.png', '.jpg')\n            croppedImg = croppedImg.convert('RGB')",
-        "detail": "adb.capture",
-        "documentation": {}
-    },
-    {
-        "label": "ScrCpyCapture",
-        "kind": 6,
-        "importPath": "adb.ScrcpyCapture",
-        "description": "adb.ScrcpyCapture",
-        "peekOfCode": "class ScrCpyCapture():\n    def start(self, executable_file, cwd='./'):\n        return subprocess.Popen(\n            executable_file,\n            stdin=subprocess.PIPE,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n            cwd=cwd\n        )\n    def read(self, process):",
-        "detail": "adb.ScrcpyCapture",
         "documentation": {}
     },
     {
@@ -784,6 +696,15 @@
         "description": "progress",
         "peekOfCode": "class Window(QtWidgets.QWidget):\n    def __init__(self):\n        super(Window, self).__init__()\n        self.button = QtWidgets.QPushButton('Choose Files')\n        self.button.clicked.connect(self.showOpenDialog)\n        layout = QtWidgets.QVBoxLayout(self)\n        layout.addWidget(self.button)\n        self.thread = QtCore.QThread()\n    def showOpenDialog(self):\n        files, filters = QtWidgets.QFileDialog.getOpenFileNames(",
         "detail": "progress",
+        "documentation": {}
+    },
+    {
+        "label": "WScreenShot",
+        "kind": 6,
+        "importPath": "screenShot",
+        "description": "screenShot",
+        "peekOfCode": "class WScreenShot(QWidget):\n    # win = ''\n    #\n    # @classmethod\n    # def run(cls):\n    #     cls.win = cls()\n    #     cls.win.show()\n    def __init__(self, parent=None):\n        super(WScreenShot, self).__init__(parent)\n        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)",
+        "detail": "screenShot",
         "documentation": {}
     }
 ]
