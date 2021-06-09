@@ -1,4 +1,6 @@
 import glob
+from util.screenRect import ScreenRect
+from util.screenPoint import ScreenPoint
 from imageToPdfWorker import ImageToPdfWorker
 import io
 import os
@@ -16,7 +18,6 @@ from PyQt5.QtWidgets import *
 
 import mainUi
 from actionController import ActionController
-from adb.capture import get_screen
 from core import macroActions, mainCore
 from libs.fileUtil import removePathFiles
 
@@ -69,6 +70,14 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
         self.savePdfWorker = ImageToPdfWorker()
         self.savePdfWorker.updateProgress.connect(self.updateProgress)
+
+        self.btnPointClick.clicked.connect(self.clickPointClick)
+        self.screenPoint = ScreenPoint()
+        self.screenPoint.selectPoint.connect(self.onSelectPoint)
+
+        self.btnScreenRect.clicked.connect(self.clickScreenRect)
+        self.screenRect = ScreenRect()
+        self.screenRect.selectedRect.connect(self.onSelectRect)
 
     def setButtonState(self, enabled):
         bWorking = enabled
@@ -344,6 +353,20 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                 self.lsFiles.takeItem(row)
         except Exception as e:
             print(e)
+
+    def clickPointClick(self):
+        self.screenPoint.show()
+
+    @pyqtSlot(int, int)
+    def onSelectPoint(self, x, y):
+        self.leClickPoint.setText(str(x) + ',' + str(y))
+
+    def clickScreenRect(self):
+        self.screenRect.show()
+
+    @pyqtSlot(int, int, int, int)
+    def onSelectRect(self, x1, y1, x2, y2):
+        self.leScreenRect.setText(f"{x1},{y1},{x2},{y2}")
 
     def lastLsFileSelect(self):
         self.lsFiles.setCurrentRow(self.lsFiles.count() - 1)

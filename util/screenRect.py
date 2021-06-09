@@ -17,12 +17,13 @@ import sys
 
 class ScreenRect(QWidget):
     selectedRect = pyqtSignal(int, int, int, int)
-    # win = ''
+    win = ''
     #
-    # @classmethod
-    # def run(cls):
-    #     cls.win = cls()
-    #     cls.win.show()
+
+    @classmethod
+    def run(cls):
+        cls.win = cls()
+        cls.win.show()
 
     def __init__(self, parent=None):
         super(ScreenRect, self).__init__(parent)
@@ -76,10 +77,12 @@ class ScreenRect(QWidget):
             ) < self.endPoint.y() else self.endPoint.y()
             y2 = self.startPoint.y() if self.startPoint.y(
             ) > self.endPoint.y() else self.endPoint.y()
-            print(self.endPoint.x())
+
+            self.startPoint = QPoint()
+            self.endPoint = QPoint()
+            self.update()
+
             self.selectedRect.emit(x1, y1, x2, y2)
-            startPoint = QPoint(x1, y1)
-            endPoint = QPoint(x2, y2)
             # PySide2
             # screenshot = QPixmap.grabWindow(QApplication.desktop().winId())
             # PyQt5

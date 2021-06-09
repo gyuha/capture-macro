@@ -1,12 +1,11 @@
 import os
-import time
-from adb.ScrcpyCapture import ScrCpyCapture
-from core import mainCore
-from adb.capture import get_screen, imageCrop
-from adb.adbKey import send_adb_key
 import sys
-from PyQt5.QtWidgets import *
+import time
+
 from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+
+from core import mainCore
 
 
 class ActionController(QObject):
@@ -40,12 +39,12 @@ class ActionController(QObject):
 
         if action == "capture":
             try:
-                scrcpy = ScrCpyCapture()
-                path = os.path.join(self.core.newFilePath())
-                scrcpy.capture(path)
+                # scrcpy = ScrCpyCapture()
+                # path = os.path.join(self.core.newFilePath())
+                # scrcpy.capture(path)
                 # get_screen('./capture/a.png')
                 time.sleep(0.3)
-                self.addImage.emit(path)
+                # self.addImage.emit(path)
             except Exception as e:
                 print(e)
         elif action == "crop":
@@ -65,7 +64,8 @@ class ActionController(QObject):
             except Exception as e:
                 print(e)
         elif action == "key":
-            send_adb_key(value)
+            print(action)
+            # send_adb_key(value)
 
         print(action)
         print(value)

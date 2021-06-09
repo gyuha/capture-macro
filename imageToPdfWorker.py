@@ -7,7 +7,6 @@ from fpdf import FPDF
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-from adb.ScrcpyCapture import ScrCpyCapture
 from core import mainCore
 
 

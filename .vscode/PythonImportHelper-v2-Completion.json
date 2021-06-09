@@ -137,6 +137,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "PyQt5.QtCore",
+        "description": "PyQt5.QtCore",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "QDir",
         "importPath": "PyQt5.QtCore",
         "description": "PyQt5.QtCore",
@@ -190,6 +198,22 @@
         "description": "PyQt5.QtWidgets",
         "isExtraImport": true,
         "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
         "documentation": {}
     },
     {
@@ -252,22 +276,6 @@
         "documentation": {}
     },
     {
-        "label": "ScrCpyCapture",
-        "importPath": "adb.ScrcpyCapture",
-        "description": "adb.ScrcpyCapture",
-        "isExtraImport": true,
-        "detail": "adb.ScrcpyCapture",
-        "documentation": {}
-    },
-    {
-        "label": "ScrCpyCapture",
-        "importPath": "adb.ScrcpyCapture",
-        "description": "adb.ScrcpyCapture",
-        "isExtraImport": true,
-        "detail": "adb.ScrcpyCapture",
-        "documentation": {}
-    },
-    {
         "label": "mainCore",
         "importPath": "core",
         "description": "core",
@@ -297,70 +305,6 @@
         "description": "core",
         "isExtraImport": true,
         "detail": "core",
-        "documentation": {}
-    },
-    {
-        "label": "get_screen",
-        "importPath": "adb.capture",
-        "description": "adb.capture",
-        "isExtraImport": true,
-        "detail": "adb.capture",
-        "documentation": {}
-    },
-    {
-        "label": "imageCrop",
-        "importPath": "adb.capture",
-        "description": "adb.capture",
-        "isExtraImport": true,
-        "detail": "adb.capture",
-        "documentation": {}
-    },
-    {
-        "label": "get_screen",
-        "importPath": "adb.capture",
-        "description": "adb.capture",
-        "isExtraImport": true,
-        "detail": "adb.capture",
-        "documentation": {}
-    },
-    {
-        "label": "get_screen",
-        "importPath": "adb.capture",
-        "description": "adb.capture",
-        "isExtraImport": true,
-        "detail": "adb.capture",
-        "documentation": {}
-    },
-    {
-        "label": "imageCrop",
-        "importPath": "adb.capture",
-        "description": "adb.capture",
-        "isExtraImport": true,
-        "detail": "adb.capture",
-        "documentation": {}
-    },
-    {
-        "label": "send_adb_key",
-        "importPath": "adb.adbKey",
-        "description": "adb.adbKey",
-        "isExtraImport": true,
-        "detail": "adb.adbKey",
-        "documentation": {}
-    },
-    {
-        "label": "AdbKey",
-        "importPath": "adb.adbKey",
-        "description": "adb.adbKey",
-        "isExtraImport": true,
-        "detail": "adb.adbKey",
-        "documentation": {}
-    },
-    {
-        "label": "send_adb_key",
-        "importPath": "adb.adbKey",
-        "description": "adb.adbKey",
-        "isExtraImport": true,
-        "detail": "adb.adbKey",
         "documentation": {}
     },
     {
@@ -403,6 +347,22 @@
         "importPath": "glob",
         "description": "glob",
         "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "ScreenRect",
+        "importPath": "util.screenRect",
+        "description": "util.screenRect",
+        "isExtraImport": true,
+        "detail": "util.screenRect",
+        "documentation": {}
+    },
+    {
+        "label": "ScreenPoint",
+        "importPath": "util.screenPoint",
+        "description": "util.screenPoint",
+        "isExtraImport": true,
+        "detail": "util.screenPoint",
         "documentation": {}
     },
     {
@@ -489,11 +449,43 @@
         "documentation": {}
     },
     {
+        "label": "AdbKey",
+        "importPath": "adb.adbKey",
+        "description": "adb.adbKey",
+        "isExtraImport": true,
+        "detail": "adb.adbKey",
+        "documentation": {}
+    },
+    {
+        "label": "send_adb_key",
+        "importPath": "adb.adbKey",
+        "description": "adb.adbKey",
+        "isExtraImport": true,
+        "detail": "adb.adbKey",
+        "documentation": {}
+    },
+    {
+        "label": "get_screen",
+        "importPath": "adb.capture",
+        "description": "adb.capture",
+        "isExtraImport": true,
+        "detail": "adb.capture",
+        "documentation": {}
+    },
+    {
+        "label": "imageCrop",
+        "importPath": "adb.capture",
+        "description": "adb.capture",
+        "isExtraImport": true,
+        "detail": "adb.capture",
+        "documentation": {}
+    },
+    {
         "label": "Ui_MainWindow",
         "kind": 6,
         "importPath": ".qt_for_python.uic.mainUi",
         "description": ".qt_for_python.uic.mainUi",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1328, 817)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1332, 826)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
         "detail": ".qt_for_python.uic.mainUi",
         "documentation": {}
     },
@@ -579,11 +571,20 @@
         "documentation": {}
     },
     {
+        "label": "ScreenPoint",
+        "kind": 6,
+        "importPath": "util.screenPoint",
+        "description": "util.screenPoint",
+        "peekOfCode": "class ScreenPoint(QWidget):\n    selectPoint = pyqtSignal(int, int)\n    def __init__(self, parent=None):\n        super(ScreenPoint, self).__init__(parent)\n        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)\n        self.setStyleSheet('''background-color:black; ''')\n        self.setWindowOpacity(0.3)\n        desktopRect = QDesktopWidget().screenGeometry()\n        self.setGeometry(desktopRect)\n        self.setCursor(Qt.CrossCursor)",
+        "detail": "util.screenPoint",
+        "documentation": {}
+    },
+    {
         "label": "ScreenRect",
         "kind": 6,
         "importPath": "util.screenRect",
         "description": "util.screenRect",
-        "peekOfCode": "class ScreenRect(QWidget):\n    selectedRect = pyqtSignal(int, int, int, int)\n    # win = ''\n    #\n    # @classmethod\n    # def run(cls):\n    #     cls.win = cls()\n    #     cls.win.show()\n    def __init__(self, parent=None):\n        super(ScreenRect, self).__init__(parent)",
+        "peekOfCode": "class ScreenRect(QWidget):\n    selectedRect = pyqtSignal(int, int, int, int)\n    win = ''\n    #\n    @classmethod\n    def run(cls):\n        cls.win = cls()\n        cls.win.show()\n    def __init__(self, parent=None):\n        super(ScreenRect, self).__init__(parent)",
         "detail": "util.screenRect",
         "documentation": {}
     },
@@ -709,7 +710,7 @@
         "kind": 6,
         "importPath": "mainUi",
         "description": "mainUi",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1328, 817)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1332, 826)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
         "detail": "mainUi",
         "documentation": {}
     },
