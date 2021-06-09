@@ -1,1 +1,1 @@
-[{"action": "capture", "value": ""}, {"action": "crop", "value": "0,245,1600,2310"}, {"action": "key", "value": "KEYCODE_VOLUME_DOWN"}, {"action": "delay", "value": "500"}]
+{"capturePath": "./capture", "windowName": "eBook", "clickPoint": "200,300", "screenRect": "100,100,200,200", "macro": [{"action": "capture", "value": "736,336,1646,1574"}, {"action": "click", "value": "1511,1018"}, {"action": "delay", "value": "1000"}]}

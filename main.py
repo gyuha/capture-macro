@@ -8,6 +8,7 @@ import re
 import sys
 import time
 from pathlib import Path
+import pyperclip
 
 from PIL import Image
 from PIL.ImageQt import ImageQt
@@ -30,9 +31,9 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.setupUi(self)
         self.core = mainCore()
 
-        self.edtCapturePath.setText(self.core.capturePath)
+        self.edtCapturePath.setText(self.core.config['capturePath'])
 
-        self.setMacroTable()
+        self.setConfigSet()
 
         self.actionOpen.triggered.connect(self.clickConfigLoad)
         self.actionOpen.setShortcut('Ctrl+O')
@@ -64,7 +65,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.actionController.actionDone.connect(self.actionDone)
         self.actionController.addImage.connect(self.addImage)
 
-        # self.setLsFiles("C:\\workspace\\adb-capture")
+        self.actionController.activeWindow('eBook')
+
         self.loadCaptureFiles()
         self.setButtonState(False)
 
@@ -110,13 +112,17 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         # item.setTextAlignment(Qt.AlignCenter)
         self.macroTable.setItem(row, 1, item)
 
-    def setMacroTable(self):
+    def setConfigSet(self):
+        self.edtCapturePath.setText(self.core.config['capturePath'])
+        self.leActiveWindowName.setText(self.core.config['windowName'])
+        self.leScreenRect.setText(self.core.config['screenRect'])
+        self.leClickPoint.setText(self.core.config['clickPoint'])
         self.macroTable.setRowCount(0)
-        self.macroTable.setRowCount(len(self.core.macro))
+        self.macroTable.setRowCount(len(self.core.config['macro']))
         self.macroTable.setAlternatingRowColors(True)
         self.macroTable.setColumnWidth(0, 100)
         self.macroTable.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
-        for row, macro in enumerate(self.core.macro):
+        for row, macro in enumerate(self.core.config['macro']):
             self.getMacroTableRow(row, macro['action'], macro['value'])
 
     @pyqtSlot(str)
@@ -124,8 +130,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         # print(txt)
         combo = self.sender()
         row = combo.currentRow()
-        self.core.macro[row]['action'] = txt
-        print(self.core.macro)
+        self.core.config['macro'][row]['action'] = txt
+        print(self.core.config)
 
     def clickConfigLoad(self):
         path = QFileDialog.getOpenFileName(
@@ -134,14 +140,15 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             self.core.configPath = path[0]
             self.lbConfigFilePath.setText(self.core.configPath)
             self.core.loadMacro()
-            self.setMacroTable()
+            self.setConfigSet()
 
     def clickConfigSave(self):
-        self.core.macro = []
+        self.core.config['macro'] = []
         for row in range(self.macroTable.rowCount()):
             action = self.macroTable.cellWidget(row, 0).currentText()
             value = self.macroTable.item(row, 1).text()
-            self.core.macro.append({"action": action, "value": value})
+            self.core.config['macro'].append(
+                {"action": action, "value": value})
         self.core.saveMacro()
         QMessageBox.information(self, "Information", "저장 완료")
 
@@ -149,18 +156,24 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         path = QFileDialog.getSaveFileName(
             self, 'Save File', "", "JSON (*.json)")
 
+        self.core.config['capturePath'] = self.edtCapturePath.text()
+        self.core.config['windowName'] = self.leActiveWindowName.text()
+        self.core.config['screenRect'] = self.leScreenRect.text()
+        self.core.config['clickPoint'] = self.leClickPoint.text()
+
         self.core.configPath = path[0]
-        self.core.macro = []
+        self.core.config['macro'] = []
 
         for row in range(self.macroTable.rowCount()):
             action = self.macroTable.cellWidget(row, 0).currentText()
             value = self.macroTable.item(row, 1).text()
-            self.core.macro.append({"action": action, "value": value})
+            self.core.config['macro'].append(
+                {"action": action, "value": value})
         self.core.saveMacro()
 
         self.lbConfigFilePath.setText(self.core.configPath)
         self.core.loadMacro()
-        self.setMacroTable()
+        self.setConfigSet()
         QMessageBox.information(self, "Information", "저장 완료")
 
     def clickConfigInsert(self):
@@ -251,7 +264,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     def clickCapture(self):
         file = self.core.newFilePath()
-        get_screen(file)
+        # get_screen(file)
         self.addCaptureFile(file)
         self.lastLsFileSelect()
 
@@ -359,14 +372,18 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     @pyqtSlot(int, int)
     def onSelectPoint(self, x, y):
-        self.leClickPoint.setText(str(x) + ',' + str(y))
+        text = f"{x},{y}"
+        pyperclip.copy(text)
+        self.leClickPoint.setText(text)
 
     def clickScreenRect(self):
         self.screenRect.show()
 
     @pyqtSlot(int, int, int, int)
     def onSelectRect(self, x1, y1, x2, y2):
-        self.leScreenRect.setText(f"{x1},{y1},{x2},{y2}")
+        text = f"{x1},{y1},{x2},{y2}"
+        pyperclip.copy(text)
+        self.leScreenRect.setText(text)
 
     def lastLsFileSelect(self):
         self.lsFiles.setCurrentRow(self.lsFiles.count() - 1)

@@ -4,7 +4,11 @@
     "Popen",
     "ffmpeg",
     "fpdf",
+    "pyautogui",
+    "pygetwindow",
+    "pyperclip",
     "pyqt",
+    "pywinauto",
     "scrcpy",
     "vframes"
   ],

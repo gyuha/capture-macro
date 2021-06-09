@@ -7,10 +7,25 @@ from PyQt5.QtWidgets import *
 
 from core import mainCore
 
+import pyautogui as pag
+import pywinauto
+import pygetwindow as gw
+
 
 class ActionController(QObject):
     actionDone = pyqtSignal()
     addImage = pyqtSignal(str)
+
+    def activeWindow(self, title):
+        try:
+            # 윈도우 타이틀에 Chrome 이 포함된 모든 윈도우 수집, 리스트로 리턴
+            win = gw.getWindowsWithTitle(title)[0]
+            if win.isActive == False:
+                pywinauto.application.Application().connect(
+                    handle=win._hWnd).top_window().set_focus()
+            win.activate()  # 윈도우 활성화
+        except Exception:
+            print(Exception)
 
     def __init__(self):
         super().__init__()
@@ -47,20 +62,13 @@ class ActionController(QObject):
                 # self.addImage.emit(path)
             except Exception as e:
                 print(e)
-        elif action == "crop":
+        elif action == "click":
             print(value)
             try:
                 size = value.split(',')
                 if len(size) < 4:
                     print(size)
                     return
-                imageCrop(
-                    os.path.join(self.core.currentFilePath()),
-                    int(size[0]),
-                    int(size[1]),
-                    int(size[2]),
-                    int(size[3])
-                )
             except Exception as e:
                 print(e)
         elif action == "key":

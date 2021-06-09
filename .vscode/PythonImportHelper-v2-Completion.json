@@ -267,12 +267,57 @@
         "documentation": {}
     },
     {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "glob",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "glob",
+        "description": "glob",
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "time",
         "description": "time",
         "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "distutils.sysconfig",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "distutils.sysconfig",
+        "description": "distutils.sysconfig",
+        "detail": "distutils.sysconfig",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
         "documentation": {}
     },
     {
@@ -308,6 +353,33 @@
         "documentation": {}
     },
     {
+        "label": "pyautogui",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyautogui",
+        "description": "pyautogui",
+        "detail": "pyautogui",
+        "documentation": {}
+    },
+    {
+        "label": "pywinauto",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pywinauto",
+        "description": "pywinauto",
+        "detail": "pywinauto",
+        "documentation": {}
+    },
+    {
+        "label": "pygetwindow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygetwindow",
+        "description": "pygetwindow",
+        "detail": "pygetwindow",
+        "documentation": {}
+    },
+    {
         "label": "QtSingleton",
         "importPath": "libs.qtSingleton",
         "description": "libs.qtSingleton",
@@ -338,15 +410,6 @@
         "description": "PIL",
         "isExtraImport": true,
         "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "glob",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "glob",
-        "description": "glob",
-        "detail": "glob",
         "documentation": {}
     },
     {
@@ -397,6 +460,15 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "pyperclip",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyperclip",
+        "description": "pyperclip",
+        "detail": "pyperclip",
         "documentation": {}
     },
     {
@@ -661,11 +733,254 @@
         "documentation": {}
     },
     {
+        "label": "get_next_cache_dir",
+        "kind": 2,
+        "importPath": "venv.Scripts.clear_comtypes_cache",
+        "description": "venv.Scripts.clear_comtypes_cache",
+        "peekOfCode": "def get_next_cache_dir():\n    work_dir = os.getcwd()\n    try:\n        # change working directory to avoid import from local folder\n        # during installation process\n        os.chdir(os.path.dirname(sys.executable))\n        import comtypes.client\n        return comtypes.client._code_cache._find_gen_dir()\n    except ImportError:\n        return None",
+        "detail": "venv.Scripts.clear_comtypes_cache",
+        "documentation": {}
+    },
+    {
+        "label": "remove_directory",
+        "kind": 2,
+        "importPath": "venv.Scripts.clear_comtypes_cache",
+        "description": "venv.Scripts.clear_comtypes_cache",
+        "peekOfCode": "def remove_directory(directory, silent):\n    if directory:\n        if silent:\n            _remove(directory)\n        else:\n            try:\n                confirm = raw_input('Remove comtypes cache directories? (y/n): ')\n            except NameError:\n                confirm = input('Remove comtypes cache directories? (y/n): ')\n            if confirm.lower() == 'y':",
+        "detail": "venv.Scripts.clear_comtypes_cache",
+        "documentation": {}
+    },
+    {
+        "label": "directory",
+        "kind": 5,
+        "importPath": "venv.Scripts.clear_comtypes_cache",
+        "description": "venv.Scripts.clear_comtypes_cache",
+        "peekOfCode": "directory = get_next_cache_dir()\nremoved = remove_directory(directory, silent)\nif removed:\n    directory = get_next_cache_dir()\n    # do not request the second confirmation\n    # if the first folder was already removed\n    remove_directory(directory, silent=removed)",
+        "detail": "venv.Scripts.clear_comtypes_cache",
+        "documentation": {}
+    },
+    {
+        "label": "removed",
+        "kind": 5,
+        "importPath": "venv.Scripts.clear_comtypes_cache",
+        "description": "venv.Scripts.clear_comtypes_cache",
+        "peekOfCode": "removed = remove_directory(directory, silent)\nif removed:\n    directory = get_next_cache_dir()\n    # do not request the second confirmation\n    # if the first folder was already removed\n    remove_directory(directory, silent=removed)",
+        "detail": "venv.Scripts.clear_comtypes_cache",
+        "documentation": {}
+    },
+    {
+        "label": "Tee",
+        "kind": 6,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "class Tee:\n    def __init__(self, file):\n        self.f = file\n    def write(self, what):\n        if self.f is not None:\n            try:\n                self.f.write(what.replace(\"\\n\", \"\\r\\n\"))\n            except IOError:\n                pass\n        tee_f.write(what)",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "CopyTo",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def CopyTo(desc, src, dest):\n    import win32api, win32con\n    while 1:\n        try:\n            win32api.CopyFile(src, dest, 0)\n            return\n        except win32api.error as details:\n            if details.winerror==5: # access denied - user not admin.\n                raise\n            if silent:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "LoadSystemModule",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def LoadSystemModule(lib_dir, modname):\n    # See if this is a debug build.\n    import importlib.util, importlib.machinery\n    suffix = '_d' if '_d.pyd' in importlib.machinery.EXTENSION_SUFFIXES else ''\n    filename = \"%s%d%d%s.dll\" % \\\n               (modname, sys.version_info[0], sys.version_info[1], suffix)\n    filename = os.path.join(lib_dir, \"pywin32_system32\", filename)\n    loader = importlib.machinery.ExtensionFileLoader(modname, filename)\n    spec = importlib.machinery.ModuleSpec(name=modname, loader=loader, origin=filename)\n    mod = importlib.util.module_from_spec(spec)",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "SetPyKeyVal",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def SetPyKeyVal(key_name, value_name, value):\n    root_hkey = get_root_hkey()\n    root_key = winreg.OpenKey(root_hkey, root_key_name)\n    try:\n        my_key = winreg.CreateKey(root_key, key_name)\n        try:\n            winreg.SetValueEx(my_key, value_name, 0, winreg.REG_SZ, value)\n        finally:\n            my_key.Close()\n    finally:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterCOMObjects",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterCOMObjects(register = 1):\n    import win32com.server.register\n    if register:\n        func = win32com.server.register.RegisterClasses\n    else:\n        func = win32com.server.register.UnregisterClasses\n    flags = {}\n    if not verbose:\n        flags['quiet']=1\n    for module, klass_name in com_modules:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterPythonwin",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterPythonwin(register=True):\n    \"\"\" Add (or remove) Pythonwin to context menu for python scripts.\n        ??? Should probably also add Edit command for pys files also.\n        Also need to remove these keys on uninstall, but there's no function\n            like file_created to add registry entries to uninstall log ???\n    \"\"\"\n    import os\n    lib_dir = distutils.sysconfig.get_python_lib(plat_specific=1)\n    classes_root=get_root_hkey()\n    ## Installer executable doesn't seem to pass anything to postinstall script indicating if it's a debug build,",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_shortcuts_folder",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_shortcuts_folder():\n    if get_root_hkey()==winreg.HKEY_LOCAL_MACHINE:\n        try:\n            fldr = get_special_folder_path(\"CSIDL_COMMON_PROGRAMS\")\n        except OSError:\n            # No CSIDL_COMMON_PROGRAMS on this platform\n            fldr = get_special_folder_path(\"CSIDL_PROGRAMS\")\n    else:\n        # non-admin install - always goes in this user's start menu.\n        fldr = get_special_folder_path(\"CSIDL_PROGRAMS\")",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_system_dir",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_system_dir():\n    import win32api # we assume this exists.\n    try:\n        import pythoncom\n        import win32process\n        from win32com.shell import shell, shellcon\n        try:\n            if win32process.IsWow64Process():\n                return shell.SHGetSpecialFolderPath(0,shellcon.CSIDL_SYSTEMX86)\n            return shell.SHGetSpecialFolderPath(0,shellcon.CSIDL_SYSTEM)",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "fixup_dbi",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def fixup_dbi():\n    # We used to have a dbi.pyd with our .pyd files, but now have a .py file.\n    # If the user didn't uninstall, they will find the .pyd which will cause\n    # problems - so handle that.\n    import win32api, win32con\n    pyd_name = os.path.join(os.path.dirname(win32api.__file__), \"dbi.pyd\")\n    pyd_d_name = os.path.join(os.path.dirname(win32api.__file__), \"dbi_d.pyd\")\n    py_name = os.path.join(os.path.dirname(win32con.__file__), \"dbi.py\")\n    for this_pyd in (pyd_name, pyd_d_name):\n        this_dest = this_pyd + \".old\"",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "install",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def install(lib_dir):\n    import traceback\n    # The .pth file is now installed as a regular file.\n    # Create the .pth file in the site-packages dir, and use only relative paths\n    # We used to write a .pth directly to sys.prefix - clobber it.\n    if os.path.isfile(os.path.join(sys.prefix, \"pywin32.pth\")):\n        os.unlink(os.path.join(sys.prefix, \"pywin32.pth\"))\n    # The .pth may be new and therefore not loaded in this session.\n    # Setup the paths just in case.\n    for name in \"win32 win32\\\\lib Pythonwin\".split():",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "uninstall",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def uninstall(lib_dir):\n    # First ensure our system modules are loaded from pywin32_system, so\n    # we can remove the ones we copied...\n    LoadSystemModule(lib_dir, \"pywintypes\")\n    LoadSystemModule(lib_dir, \"pythoncom\")\n    try:\n        RegisterCOMObjects(False)\n    except Exception as why:\n        print(\"Failed to unregister COM objects: %s\" % (why,))\n    try:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "verify_destination",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def verify_destination(location):\n    if not os.path.isdir(location):\n        raise argparse.ArgumentTypeError(\"Path \\\"{}\\\" does not exist!\".format(location))\n    return location\nif __name__ == '__main__':\n    import argparse\n    parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,\n                                     description=\"\"\"A post-install script for the pywin32 extensions.\n    * Typical usage:\n    > python pywin32_postinstall.py -install",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "tee_f",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "tee_f = open(os.path.join(tempfile.gettempdir(), 'pywin32_postinstall.log'), \"w\")\nclass Tee:\n    def __init__(self, file):\n        self.f = file\n    def write(self, what):\n        if self.f is not None:\n            try:\n                self.f.write(what.replace(\"\\n\", \"\\r\\n\"))\n            except IOError:\n                pass",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "sys.stderr",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "sys.stderr = Tee(sys.stderr)\nsys.stdout = Tee(sys.stdout)\ncom_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\",         \"Interpreter\"),\n    (\"win32com.servers.dictionary\",     \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\",\"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "sys.stdout",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "sys.stdout = Tee(sys.stdout)\ncom_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\",         \"Interpreter\"),\n    (\"win32com.servers.dictionary\",     \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\",\"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'\nsilent = 0",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "com_modules",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "com_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\",         \"Interpreter\"),\n    (\"win32com.servers.dictionary\",     \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\",\"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'\nsilent = 0\n# Verbosity of output messages.",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "silent",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "silent = 0\n# Verbosity of output messages.\nverbose = 1\nroot_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to Python23\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "verbose",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "verbose = 1\nroot_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to Python23\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.\n    file_created\n    is_bdist_wininst = True",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "root_key_name",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "root_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to Python23\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.\n    file_created\n    is_bdist_wininst = True\nexcept NameError:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "run_test",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "def run_test(script, cmdline_rest=\"\"):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_rest.split()\n    print(script)\n    popen = subprocess.Popen(cmd, shell=True, cwd=dirname,\n                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT)\n    data = popen.communicate()[0]\n    if sys.version_info > (3,):\n        sys.stdout.write(data.decode('latin-1'))",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "find_and_run",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "def find_and_run(possible_locations, script, cmdline_rest=\"\"):\n    for maybe in possible_locations:\n        if os.path.isfile(os.path.join(maybe, script)):\n            run_test(os.path.abspath(os.path.join(maybe, script)), cmdline_rest)\n            break\n    else:\n        raise RuntimeError(\"Failed to locate the test script '%s' in one of %s\"\n                           % (script, possible_locations))\nif __name__ == '__main__':\n    import argparse",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "this_dir",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "this_dir = os.path.dirname(__file__)\nsite_packages = [site.getusersitepackages(), ] + site.getsitepackages()\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error.\ndef run_test(script, cmdline_rest=\"\"):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_rest.split()\n    print(script)\n    popen = subprocess.Popen(cmd, shell=True, cwd=dirname,",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "site_packages",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "site_packages = [site.getusersitepackages(), ] + site.getsitepackages()\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error.\ndef run_test(script, cmdline_rest=\"\"):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_rest.split()\n    print(script)\n    popen = subprocess.Popen(cmd, shell=True, cwd=dirname,\n                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT)",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
         "label": "ActionController",
         "kind": 6,
         "importPath": "actionController",
         "description": "actionController",
-        "peekOfCode": "class ActionController(QObject):\n    actionDone = pyqtSignal()\n    addImage = pyqtSignal(str)\n    def __init__(self):\n        super().__init__()\n        self.running = False\n        self.core = mainCore()\n    def start(self):\n        self.running = True\n    def stop(self):",
+        "peekOfCode": "class ActionController(QObject):\n    actionDone = pyqtSignal()\n    addImage = pyqtSignal(str)\n    def activeWindow(self, title):\n        try:\n            # 윈도우 타이틀에 Chrome 이 포함된 모든 윈도우 수집, 리스트로 리턴\n            win = gw.getWindowsWithTitle(title)[0]\n            if win.isActive == False:\n                pywinauto.application.Application().connect(\n                    handle=win._hWnd).top_window().set_focus()",
         "detail": "actionController",
         "documentation": {}
     },
@@ -674,7 +989,7 @@
         "kind": 6,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "class mainCore(QtSingleton):\n  def __init__(self):\n    super().__init__()\n    self.capturePath = './capture'\n    self.macro = []\n    self.configPath = './default.json'\n    self.loadMacro()\n    self.fileNumber = 0\n  def loadMacro(self):\n    \"\"\"",
+        "peekOfCode": "class mainCore(QtSingleton):\n    def __init__(self):\n        super().__init__()\n        self.capturePath = './capture'\n        self.config = defaultOptions\n        self.configPath = './default.json'\n        self.loadMacro()\n        self.fileNumber = 0\n    def loadMacro(self):\n        \"\"\"",
         "detail": "core",
         "documentation": {}
     },
@@ -683,7 +998,16 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"crop\", \"key\"]\nclass mainCore(QtSingleton):\n  def __init__(self):\n    super().__init__()\n    self.capturePath = './capture'\n    self.macro = []\n    self.configPath = './default.json'\n    self.loadMacro()\n    self.fileNumber = 0\n  def loadMacro(self):",
+        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\", \"key\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {\"capture\": \"\", \"click\": \"\", \"delay\": 500}\n    ]\n}",
+        "detail": "core",
+        "documentation": {}
+    },
+    {
+        "label": "defaultOptions",
+        "kind": 5,
+        "importPath": "core",
+        "description": "core",
+        "peekOfCode": "defaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {\"capture\": \"\", \"click\": \"\", \"delay\": 500}\n    ]\n}\nclass mainCore(QtSingleton):",
         "detail": "core",
         "documentation": {}
     },
@@ -701,7 +1025,7 @@
         "kind": 6,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "class MainWindow(QMainWindow, mainUi.Ui_MainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.setupUi(self)\n        self.core = mainCore()\n        self.edtCapturePath.setText(self.core.capturePath)\n        self.setMacroTable()\n        self.actionOpen.triggered.connect(self.clickConfigLoad)\n        self.actionOpen.setShortcut('Ctrl+O')\n        self.actionSave.triggered.connect(self.clickConfigSave)",
+        "peekOfCode": "class MainWindow(QMainWindow, mainUi.Ui_MainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.setupUi(self)\n        self.core = mainCore()\n        self.edtCapturePath.setText(self.core.config['capturePath'])\n        self.setConfigSet()\n        self.actionOpen.triggered.connect(self.clickConfigLoad)\n        self.actionOpen.setShortcut('Ctrl+O')\n        self.actionSave.triggered.connect(self.clickConfigSave)",
         "detail": "main",
         "documentation": {}
     },
