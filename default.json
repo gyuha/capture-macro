@@ -1,1 +1,1 @@
-{"capturePath": "./capture", "windowName": "eBook", "clickPoint": "1885,1055", "screenRect": "626,242,1817,1869", "macro": [{"action": "capture", "value": "626,242,1817,1869"}, {"action": "click", "value": "1885,1055"}, {"action": "delay", "value": "100"}]}
+{"capturePath": "./capture", "windowName": "eBook", "clickPoint": "805,919", "screenRect": "120,122,1610,2041", "macro": [{"action": "capture", "value": "120,122,1610,2041"}, {"action": "scroll", "value": "805,919"}, {"action": "delay", "value": "100"}]}

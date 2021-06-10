@@ -2,7 +2,7 @@ import os
 from libs.qtSingleton import QtSingleton
 import json
 
-macroActions = ["capture", "delay", "click", "key"]
+macroActions = ["capture", "delay", "click", "key", "scroll"]
 
 defaultOptions = {
     "capturePath": "./capture",

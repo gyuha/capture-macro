@@ -82,6 +82,11 @@ class ActionController(QObject):
                 # pyautogui.click()
             except Exception as e:
                 print(e)
+        elif action == "scroll":
+            point = value.split(',')
+            if len(point) == 2:
+                pyautogui.moveTo(x=int(point[0]), y=int(point[1]))
+            pyautogui.scroll(-20)
         elif action == "key":
             pyautogui.press(value)
 

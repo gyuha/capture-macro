@@ -1006,7 +1006,7 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\", \"key\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {\"capture\": \"\", \"click\": \"\", \"delay\": 500}\n    ]\n}",
+        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\", \"key\", \"scroll\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {\"capture\": \"\", \"click\": \"\", \"delay\": 500}\n    ]\n}",
         "detail": "core",
         "documentation": {}
     },
