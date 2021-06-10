@@ -2,14 +2,15 @@ import os
 import sys
 import time
 
-from PyQt5.QtCore import *
+import pyautogui
+import pyautogui as pag
+import pygetwindow as gw
+
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 
 from core import mainCore
-
-import pyautogui as pag
-import pywinauto
-import pygetwindow as gw
 
 
 class ActionController(QObject):
@@ -19,7 +20,7 @@ class ActionController(QObject):
     def activeWindow(self, title):
         try:
             # 윈도우 타이틀에 Chrome 이 포함된 모든 윈도우 수집, 리스트로 리턴
-            win = gw.getWindowsWithTitle(title)[0]
+            win = gw.getWindowsWithTitle(title)[-1]
             if win.isActive == False:
                 pywinauto.application.Application().connect(
                     handle=win._hWnd).top_window().set_focus()
@@ -63,6 +64,7 @@ class ActionController(QObject):
                              QPoint(int(point[2]), int(point[3])))
                 outputRegion = screenshot.copy(rect)
                 path = os.path.join(self.core.newFilePath())
+                print('📢[actionController.py:67]:', path)
                 outputRegion.save(path, format='JPG', quality=90)
                 # time.sleep(0.3)
                 self.addImage.emit(path)
@@ -70,23 +72,20 @@ class ActionController(QObject):
                 print(e)
         elif action == "click":
             try:
-                size = value.split(',')
-                if len(size) < 2:
+                point = value.split(',')
+                if len(point) < 2:
                     raise Exception('Invalid click point')
                     return
+                pyautogui.click(x=int(point[0]), y=int(point[1]))
+                # pyautogui.moveTo(int(point[0]), int(point[1]), 0.2)
+                time.sleep(0.2)
+                # pyautogui.click()
             except Exception as e:
                 print(e)
         elif action == "key":
-            print(action)
-            # send_adb_key(value)
-
-        print(action)
-        print(value)
+            pyautogui.press(value)
 
         self.actionDone.emit()
-
-    def sendKey(self, key):
-        send_adb_key(key)
 
     def stopAction(self):
         self.running = False

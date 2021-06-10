@@ -47,8 +47,8 @@ class mainCore(QtSingleton):
         return "{:04d}.jpg".format(self.fileNumber)
 
     def currentFilePath(self):
-        return os.path.join(self.config.capturePath, self.currentFileName())
+        return os.path.join(self.config['capturePath'], self.currentFileName())
 
     def newFilePath(self):
         self.fileNumber = self.fileNumber + 1
-        return os.path.join(self.config.capturePath, self.currentFileName())
+        return os.path.join(self.config['capturePath'], self.currentFileName())

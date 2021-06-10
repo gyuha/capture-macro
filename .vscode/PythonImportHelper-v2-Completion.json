@@ -225,6 +225,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
+        "documentation": {}
+    },
+    {
         "label": "QIcon",
         "importPath": "PyQt5.QtGui",
         "description": "PyQt5.QtGui",
@@ -321,6 +329,24 @@
         "documentation": {}
     },
     {
+        "label": "pyautogui",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyautogui",
+        "description": "pyautogui",
+        "detail": "pyautogui",
+        "documentation": {}
+    },
+    {
+        "label": "pygetwindow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygetwindow",
+        "description": "pygetwindow",
+        "detail": "pygetwindow",
+        "documentation": {}
+    },
+    {
         "label": "mainCore",
         "importPath": "core",
         "description": "core",
@@ -350,33 +376,6 @@
         "description": "core",
         "isExtraImport": true,
         "detail": "core",
-        "documentation": {}
-    },
-    {
-        "label": "pyautogui",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pyautogui",
-        "description": "pyautogui",
-        "detail": "pyautogui",
-        "documentation": {}
-    },
-    {
-        "label": "pywinauto",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pywinauto",
-        "description": "pywinauto",
-        "detail": "pywinauto",
-        "documentation": {}
-    },
-    {
-        "label": "pygetwindow",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pygetwindow",
-        "description": "pygetwindow",
-        "detail": "pygetwindow",
         "documentation": {}
     },
     {
@@ -413,30 +412,6 @@
         "documentation": {}
     },
     {
-        "label": "ScreenRect",
-        "importPath": "util.screenRect",
-        "description": "util.screenRect",
-        "isExtraImport": true,
-        "detail": "util.screenRect",
-        "documentation": {}
-    },
-    {
-        "label": "ScreenPoint",
-        "importPath": "util.screenPoint",
-        "description": "util.screenPoint",
-        "isExtraImport": true,
-        "detail": "util.screenPoint",
-        "documentation": {}
-    },
-    {
-        "label": "ImageToPdfWorker",
-        "importPath": "imageToPdfWorker",
-        "description": "imageToPdfWorker",
-        "isExtraImport": true,
-        "detail": "imageToPdfWorker",
-        "documentation": {}
-    },
-    {
         "label": "io",
         "kind": 6,
         "isExtraImport": true,
@@ -460,6 +435,15 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "keyboard",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "keyboard",
+        "description": "keyboard",
+        "detail": "keyboard",
         "documentation": {}
     },
     {
@@ -497,11 +481,35 @@
         "documentation": {}
     },
     {
+        "label": "ImageToPdfWorker",
+        "importPath": "imageToPdfWorker",
+        "description": "imageToPdfWorker",
+        "isExtraImport": true,
+        "detail": "imageToPdfWorker",
+        "documentation": {}
+    },
+    {
         "label": "removePathFiles",
         "importPath": "libs.fileUtil",
         "description": "libs.fileUtil",
         "isExtraImport": true,
         "detail": "libs.fileUtil",
+        "documentation": {}
+    },
+    {
+        "label": "ScreenPoint",
+        "importPath": "util.screenPoint",
+        "description": "util.screenPoint",
+        "isExtraImport": true,
+        "detail": "util.screenPoint",
+        "documentation": {}
+    },
+    {
+        "label": "ScreenRect",
+        "importPath": "util.screenRect",
+        "description": "util.screenRect",
+        "isExtraImport": true,
+        "detail": "util.screenRect",
         "documentation": {}
     },
     {
@@ -980,7 +988,7 @@
         "kind": 6,
         "importPath": "actionController",
         "description": "actionController",
-        "peekOfCode": "class ActionController(QObject):\n    actionDone = pyqtSignal()\n    addImage = pyqtSignal(str)\n    def activeWindow(self, title):\n        try:\n            # 윈도우 타이틀에 Chrome 이 포함된 모든 윈도우 수집, 리스트로 리턴\n            win = gw.getWindowsWithTitle(title)[0]\n            if win.isActive == False:\n                pywinauto.application.Application().connect(\n                    handle=win._hWnd).top_window().set_focus()",
+        "peekOfCode": "class ActionController(QObject):\n    actionDone = pyqtSignal()\n    addImage = pyqtSignal(str)\n    def activeWindow(self, title):\n        try:\n            # 윈도우 타이틀에 Chrome 이 포함된 모든 윈도우 수집, 리스트로 리턴\n            win = gw.getWindowsWithTitle(title)[-1]\n            if win.isActive == False:\n                pywinauto.application.Application().connect(\n                    handle=win._hWnd).top_window().set_focus()",
         "detail": "actionController",
         "documentation": {}
     },
@@ -1025,7 +1033,7 @@
         "kind": 6,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "class MainWindow(QMainWindow, mainUi.Ui_MainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.setupUi(self)\n        self.core = mainCore()\n        self.edtCapturePath.setText(self.core.config['capturePath'])\n        self.setConfigSet()\n        self.actionOpen.triggered.connect(self.clickConfigLoad)\n        self.actionOpen.setShortcut('Ctrl+O')\n        self.actionSave.triggered.connect(self.clickConfigSave)",
+        "peekOfCode": "class MainWindow(QMainWindow, mainUi.Ui_MainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.setupUi(self)\n        self.core = mainCore()\n        self.setConfigSet()\n        self.actionOpen.triggered.connect(self.clickConfigLoad)\n        self.actionOpen.setShortcut('Ctrl+O')\n        self.actionSave.triggered.connect(self.clickConfigSave)\n        self.actionSave.setShortcut('Ctrl+S')",
         "detail": "main",
         "documentation": {}
     },

@@ -1,15 +1,14 @@
 import glob
-from util.screenRect import ScreenRect
-from util.screenPoint import ScreenPoint
-from imageToPdfWorker import ImageToPdfWorker
 import io
 import os
 import re
 import sys
 import time
 from pathlib import Path
-import pyperclip
 
+import keyboard
+
+import pyperclip
 from PIL import Image
 from PIL.ImageQt import ImageQt
 from PyQt5 import QtCore, uic
@@ -20,7 +19,10 @@ from PyQt5.QtWidgets import *
 import mainUi
 from actionController import ActionController
 from core import macroActions, mainCore
+from imageToPdfWorker import ImageToPdfWorker
 from libs.fileUtil import removePathFiles
+from util.screenPoint import ScreenPoint
+from util.screenRect import ScreenRect
 
 # form_class = uic.loadUiType("mainUi.ui")[0]
 
@@ -30,8 +32,6 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.core = mainCore()
-
-        self.edtCapturePath.setText(self.core.config['capturePath'])
 
         self.setConfigSet()
 
@@ -65,8 +65,6 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.actionController.actionDone.connect(self.actionDone)
         self.actionController.addImage.connect(self.addImage)
 
-        self.actionController.activeWindow('eBook')
-
         self.loadCaptureFiles()
         self.setButtonState(False)
 
@@ -80,6 +78,9 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.btnScreenRect.clicked.connect(self.clickScreenRect)
         self.screenRect = ScreenRect()
         self.screenRect.selectedRect.connect(self.onSelectRect)
+
+        keyboard.add_hotkey('f1', self.clickStart)
+        keyboard.add_hotkey('f2', self.clickStop)
 
     def setButtonState(self, enabled):
         bWorking = enabled
@@ -144,6 +145,9 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     def clickConfigSave(self):
         self.core.config['macro'] = []
+        self.core.config['windowName'] = self.leActiveWindowName.text()
+        self.core.config['screenRect'] = self.leScreenRect.text()
+        self.core.config['clickPoint'] = self.leClickPoint.text()
         for row in range(self.macroTable.rowCount()):
             action = self.macroTable.cellWidget(row, 0).currentText()
             value = self.macroTable.item(row, 1).text()
@@ -220,6 +224,9 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         return flag
 
     def clickStart(self):
+        print('📢[main.py:220]:', self.core.config['windowName'])
+        self.actionController.activeWindow(self.leActiveWindowName.text())
+
         if (self.checkStop()):
             return
         self.setButtonState(True)
