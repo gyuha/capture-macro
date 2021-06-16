@@ -23,13 +23,14 @@ class ScreenRect(QWidget):
     @classmethod
     def run(cls):
         cls.win = cls()
+        cls.win.setMouseTracking(True)
         cls.win.show()
 
     def __init__(self, parent=None):
         super(ScreenRect, self).__init__(parent)
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.setStyleSheet('''background-color:black; ''')
-        self.setWindowOpacity(0.6)
+        self.setWindowOpacity(0.3)
         # desktop = QApplication.desktop()
         # rect = desktop.availableGeometry()
         desktopRect = QDesktopWidget().screenGeometry()
@@ -41,6 +42,7 @@ class ScreenRect(QWidget):
         self.isDrawing = False
         self.startPoint = QPoint()
         self.endPoint = QPoint()
+        self.currentPoint = QPoint()
 
     def paintEvent(self, event):
         if self.isDrawing:
@@ -53,17 +55,28 @@ class ScreenRect(QWidget):
             pp.setBrush(brush)
             pp.drawRect(QRect(self.startPoint, self.endPoint))
             self.setMask(QBitmap(self.mask))
+        pp = QPainter()
+        desktopRect = QDesktopWidget().screenGeometry()
+        pp.begin(self)
+        pp.setPen(QPen(Qt.red, 2))
+        pp.drawLine(0, self.currentPoint.y(),
+                    desktopRect.width(), self.currentPoint.y())
+        pp.drawLine(self.currentPoint.x(), 0,
+                    self.currentPoint.x(), desktopRect.height())
+        pp.end()
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.startPoint = event.pos()
+            self.currentPoint = event.pos()
             self.endPoint = self.startPoint
             self.isDrawing = True
 
     def mouseMoveEvent(self, event):
+        self.currentPoint = event.pos()
         if self.isDrawing:
             self.endPoint = event.pos()
-            self.update()
+        self.update()
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -80,7 +93,6 @@ class ScreenRect(QWidget):
 
             self.startPoint = QPoint()
             self.endPoint = QPoint()
-            self.update()
 
             self.selectedRect.emit(x1, y1, x2, y2)
             # PySide2
@@ -93,6 +105,7 @@ class ScreenRect(QWidget):
             # rect = QRect(startPoint, endPoint)
             # outputRegion = screenshot.copy(rect)
             # outputRegion.save('d:/sho54t.jpg', format='JPG', quality=100)
+            self.setMouseTracking(False)
             self.close()
 
 
