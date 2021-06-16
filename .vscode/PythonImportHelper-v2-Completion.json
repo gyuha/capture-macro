@@ -664,7 +664,7 @@
         "kind": 6,
         "importPath": "util.screenRect",
         "description": "util.screenRect",
-        "peekOfCode": "class ScreenRect(QWidget):\n    selectedRect = pyqtSignal(int, int, int, int)\n    win = ''\n    #\n    @classmethod\n    def run(cls):\n        cls.win = cls()\n        cls.win.setMouseTracking(True)\n        cls.win.show()\n    def __init__(self, parent=None):",
+        "peekOfCode": "class ScreenRect(QWidget):\n    selectedRect = pyqtSignal(int, int, int, int)\n    win = ''\n    @classmethod\n    def run(cls):\n        cls.win = cls()\n        cls.win.show()\n        return cls.win\n    def __init__(self, parent=None):\n        super(ScreenRect, self).__init__(parent)",
         "detail": "util.screenRect",
         "documentation": {}
     },

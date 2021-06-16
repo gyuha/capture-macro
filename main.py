@@ -375,7 +375,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             print(e)
 
     def clickPointClick(self):
-        self.screenPoint.run()
+        self.screenPoint.show()
 
     @pyqtSlot(int, int)
     def onSelectPoint(self, x, y):
@@ -384,7 +384,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.leClickPoint.setText(text)
 
     def clickScreenRect(self):
-        self.screenRect.run()
+        self.screenRect = self.screenRect.run()
+        self.screenRect.selectedRect.connect(self.onSelectRect)
 
     @pyqtSlot(int, int, int, int)
     def onSelectRect(self, x1, y1, x2, y2):

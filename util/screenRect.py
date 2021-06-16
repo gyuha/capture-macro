@@ -18,13 +18,12 @@ import sys
 class ScreenRect(QWidget):
     selectedRect = pyqtSignal(int, int, int, int)
     win = ''
-    #
 
     @classmethod
     def run(cls):
         cls.win = cls()
-        cls.win.setMouseTracking(True)
         cls.win.show()
+        return cls.win
 
     def __init__(self, parent=None):
         super(ScreenRect, self).__init__(parent)
@@ -43,6 +42,7 @@ class ScreenRect(QWidget):
         self.startPoint = QPoint()
         self.endPoint = QPoint()
         self.currentPoint = QPoint()
+        self.setMouseTracking(True)
 
     def paintEvent(self, event):
         if self.isDrawing:
@@ -80,6 +80,7 @@ class ScreenRect(QWidget):
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.LeftButton:
+            self.setMouseTracking(False)
             self.endPoint = event.pos()
 
             x1 = self.startPoint.x() if self.startPoint.x(
@@ -93,19 +94,10 @@ class ScreenRect(QWidget):
 
             self.startPoint = QPoint()
             self.endPoint = QPoint()
+            self.update()
 
             self.selectedRect.emit(x1, y1, x2, y2)
-            # PySide2
-            # screenshot = QPixmap.grabWindow(QApplication.desktop().winId())
-            # PyQt5
-            # screenshot = QApplication.primaryScreen().grabWindow(0)
 
-            # screenshot = QApplication.primaryScreen().grabWindow(
-            #     QApplication.desktop().winId())
-            # rect = QRect(startPoint, endPoint)
-            # outputRegion = screenshot.copy(rect)
-            # outputRegion.save('d:/sho54t.jpg', format='JPG', quality=100)
-            self.setMouseTracking(False)
             self.close()
 
 
