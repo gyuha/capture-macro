@@ -26,7 +26,6 @@ class ImageToPdfWorker(QThread):
 
     def run(self):
         self.running = True
-        pdf = FPDF()
         # imagelist is the list with all image filenames
         imageList = []
         self.updateProgress.emit(0, 'start')
@@ -47,9 +46,17 @@ class ImageToPdfWorker(QThread):
 
         # 이미지 비율 가져 오기
         im = Image.open(imageList[0])
-        rate = im.width / im.height
+        imgRate = im.width / im.height
         width = 210
         height = 297
+
+        orientation = 'P' if im.width < im.height else 'L'
+        pdf = FPDF(orientation=orientation)
+
+        pageRate = width / height
+
+        if orientation == 'L':
+            width, height = height, width
 
         for image in imageList:
             if not self.running:
@@ -59,14 +66,22 @@ class ImageToPdfWorker(QThread):
                 35 + int((count / (imageCount * 3)) * 100), 'image convert')
             pdf.add_page()
 
-            x = ((width*(3/4) - (width*rate)) / 2)
-            x = x if x > 0 else 0
+            if imgRate < pageRate:
+                x = (width - height * imgRate) / 2
+                x = x if x > 0 else 0
+                y = 0
 
-            w = (height*rate)
-            w = width if w > width else w
+                w = height * imgRate
+                h = height
+            else:
+                x = 0
+                y = (height - width / imgRate) / 2
+                y = y if y > 0 else 0
 
-            pdf.image(image, x=x,
-                      y=0, w=w, h=height)
+                w = width
+                h = width / imgRate
+
+            pdf.image(image, x=x, y=y, w=w, h=h)
         self.updateProgress.emit(80, 'save to pdf')
         pdf.output(self.pdfFileName, "F")
         self.updateProgress.emit(100, 'complete')
