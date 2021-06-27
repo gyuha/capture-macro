@@ -93,6 +93,7 @@ pyinstaller --onefile -F --log-level DEBUG --debug main.py
 # Update all package
 ```
 pip freeze | %{$_.split('==')[0]} | %{pip install --upgrade $_}
+```
 
 
 ## Reference
