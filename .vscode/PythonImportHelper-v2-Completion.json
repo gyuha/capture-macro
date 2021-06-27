@@ -347,6 +347,15 @@
         "documentation": {}
     },
     {
+        "label": "pydirectinput",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pydirectinput",
+        "description": "pydirectinput",
+        "detail": "pydirectinput",
+        "documentation": {}
+    },
+    {
         "label": "mainCore",
         "importPath": "core",
         "description": "core",

@@ -5,6 +5,7 @@ import time
 import pyautogui
 import pyautogui as pag
 import pygetwindow as gw
+import pydirectinput
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -76,9 +77,12 @@ class ActionController(QObject):
                 if len(point) < 2:
                     raise Exception('Invalid click point')
                     return
-                pyautogui.click(x=int(point[0]), y=int(point[1]))
+                # pyautogui.moveTo(int(point[0], int(point[1])))
+                # pyautogui.click()
+                pyautogui.moveTo(int(point[0]), int(point[1]), 0.05)
+                pydirectinput.click()
                 # pyautogui.moveTo(int(point[0]), int(point[1]), 0.2)
-                time.sleep(0.2)
+                # time.sleep(0.2)
                 # pyautogui.click()
             except Exception as e:
                 print(e)

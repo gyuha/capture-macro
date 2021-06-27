@@ -5,6 +5,7 @@
     "ffmpeg",
     "fpdf",
     "pyautogui",
+    "pydirectinput",
     "pygetwindow",
     "pyperclip",
     "pyqt",
