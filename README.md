@@ -97,3 +97,6 @@ pip freeze | %{$_.split('==')[0]} | %{pip install --upgrade $_}
 
 ## Reference
 * [Convert Images to PDF using Python](https://datatofish.com/images-to-pdf-python/)
+
+# Note
+- 다른 윈도우 클릭시 클릭이 되지 않는 경우에는 프로그램을 관리자 모드로 실행 해 주면 된다.
