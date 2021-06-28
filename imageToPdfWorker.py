@@ -51,12 +51,13 @@ class ImageToPdfWorker(QThread):
         height = 297
 
         orientation = 'P' if im.width < im.height else 'L'
-        pdf = FPDF(orientation=orientation)
-
-        pageRate = width / height
 
         if orientation == 'L':
             width, height = height, width
+
+        height = width / imgRate
+
+        pdf = FPDF(orientation, 'mm', (width, height))
 
         for image in imageList:
             if not self.running:
@@ -66,22 +67,8 @@ class ImageToPdfWorker(QThread):
                 35 + int((count / (imageCount * 3)) * 100), 'image convert')
             pdf.add_page()
 
-            if imgRate < pageRate:
-                x = (width - height * imgRate) / 2
-                x = x if x > 0 else 0
-                y = 0
+            pdf.image(image, x=0, y=0, w=width, h=height)
 
-                w = height * imgRate
-                h = height
-            else:
-                x = 0
-                y = (height - width / imgRate) / 2
-                y = y if y > 0 else 0
-
-                w = width
-                h = width / imgRate
-
-            pdf.image(image, x=x, y=y, w=w, h=h)
         self.updateProgress.emit(80, 'save to pdf')
         pdf.output(self.pdfFileName, "F")
         self.updateProgress.emit(100, 'complete')
