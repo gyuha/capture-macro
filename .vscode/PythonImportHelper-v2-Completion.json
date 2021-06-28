@@ -574,7 +574,7 @@
         "kind": 6,
         "importPath": ".qt_for_python.uic.mainUi",
         "description": ".qt_for_python.uic.mainUi",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1332, 826)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1328, 817)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
         "detail": ".qt_for_python.uic.mainUi",
         "documentation": {}
     },
@@ -1042,7 +1042,7 @@
         "kind": 6,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "class MainWindow(QMainWindow, mainUi.Ui_MainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.setupUi(self)\n        self.core = mainCore()\n        self.setConfigSet()\n        self.actionOpen.triggered.connect(self.clickConfigLoad)\n        self.actionOpen.setShortcut('Ctrl+O')\n        self.actionSave.triggered.connect(self.clickConfigSave)\n        self.actionSave.setShortcut('Ctrl+S')",
+        "peekOfCode": "class MainWindow(QMainWindow, mainUi.Ui_MainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.setupUi(self)\n        self.core = mainCore()\n        self.setWindowIcon(QIcon('icon.ico'))\n        self.setConfigSet()\n        self.actionOpen.triggered.connect(self.clickConfigLoad)\n        self.actionOpen.setShortcut('Ctrl+O')\n        self.actionSave.triggered.connect(self.clickConfigSave)",
         "detail": "main",
         "documentation": {}
     },
@@ -1051,7 +1051,7 @@
         "kind": 6,
         "importPath": "mainUi",
         "description": "mainUi",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1332, 826)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1328, 817)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
         "detail": "mainUi",
         "documentation": {}
     },

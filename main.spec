@@ -8,7 +8,7 @@ a = Analysis(['main.py'],
              pathex=['.\\'],
              binaries=[],
              datas=[
-              ('default.json', '.')
+              ('icon.ico', 'default.json')
              ],
              hiddenimports=[],
              hookspath=[],
@@ -33,4 +33,5 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False )
+          console=False,
+          icon="icon.ico")

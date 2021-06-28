@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1332, 826)
+        MainWindow.resize(1328, 817)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -236,7 +236,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setStretch(3, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1332, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1328, 26))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
@@ -264,8 +264,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "ADB Caputre automate"))
-        self.label_4.setText(_translate("MainWindow", "ADB capture automate"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Caputre automate"))
+        self.label_4.setText(_translate("MainWindow", "Capture automate"))
         self.label.setText(_translate("MainWindow", "저장경로"))
         self.edtCapturePath.setText(_translate("MainWindow", "./caputre"))
         self.btnPathSelect.setText(_translate("MainWindow", "선택"))

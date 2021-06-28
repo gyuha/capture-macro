@@ -33,6 +33,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.setupUi(self)
         self.core = mainCore()
 
+        self.setWindowIcon(QIcon('icon.ico'))
+
         self.setConfigSet()
 
         self.actionOpen.triggered.connect(self.clickConfigLoad)

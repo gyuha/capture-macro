@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1332</width>
-    <height>826</height>
+    <width>1328</width>
+    <height>817</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>ADB Caputre automate</string>
+   <string>Caputre automate</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,0,1,2">
@@ -28,7 +28,7 @@
          </font>
         </property>
         <property name="text">
-         <string>ADB capture automate</string>
+         <string>Capture automate</string>
         </property>
        </widget>
       </item>
@@ -440,7 +440,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1332</width>
+     <width>1328</width>
      <height>26</height>
     </rect>
    </property>
