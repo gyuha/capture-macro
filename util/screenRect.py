@@ -29,7 +29,7 @@ class ScreenRect(QWidget):
         super(ScreenRect, self).__init__(parent)
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.setStyleSheet('''background-color:black; ''')
-        self.setWindowOpacity(0.3)
+        self.setWindowOpacity(0.4)
         # desktop = QApplication.desktop()
         # rect = desktop.availableGeometry()
         desktopRect = QDesktopWidget().screenGeometry()

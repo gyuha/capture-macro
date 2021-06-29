@@ -145,6 +145,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "PyQt5.QtCore",
+        "description": "PyQt5.QtCore",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "QDir",
         "importPath": "PyQt5.QtCore",
         "description": "PyQt5.QtCore",
@@ -206,6 +214,22 @@
         "description": "PyQt5.QtWidgets",
         "isExtraImport": true,
         "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
         "documentation": {}
     },
     {
@@ -447,6 +471,14 @@
         "documentation": {}
     },
     {
+        "label": "ScreenRectCheck",
+        "importPath": "util.screenRectCheck",
+        "description": "util.screenRectCheck",
+        "isExtraImport": true,
+        "detail": "util.screenRectCheck",
+        "documentation": {}
+    },
+    {
         "label": "keyboard",
         "kind": 6,
         "isExtraImport": true,
@@ -683,6 +715,15 @@
         "description": "util.screenRect",
         "peekOfCode": "class ScreenRect(QWidget):\n    selectedRect = pyqtSignal(int, int, int, int)\n    win = ''\n    @classmethod\n    def run(cls):\n        cls.win = cls()\n        cls.win.show()\n        return cls.win\n    def __init__(self, parent=None):\n        super(ScreenRect, self).__init__(parent)",
         "detail": "util.screenRect",
+        "documentation": {}
+    },
+    {
+        "label": "ScreenRectCheck",
+        "kind": 6,
+        "importPath": "util.screenRectCheck",
+        "description": "util.screenRectCheck",
+        "peekOfCode": "class ScreenRectCheck(QWidget):\n    win = ''\n    def __init__(self, parent=None):\n        super(ScreenRectCheck, self).__init__(parent)\n        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)\n        self.setStyleSheet('''background-color:black; ''')\n        self.setWindowOpacity(0.5)\n        desktopRect = QDesktopWidget().screenGeometry()\n        self.setGeometry(desktopRect)\n        # self.setCursor(Qt.CrossCursor)",
+        "detail": "util.screenRectCheck",
         "documentation": {}
     },
     {

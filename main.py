@@ -5,6 +5,7 @@ import re
 import sys
 import time
 from pathlib import Path
+from util.screenRectCheck import ScreenRectCheck
 
 import keyboard
 
@@ -79,6 +80,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
         self.screenRect = ScreenRect()
         self.screenRect.selectedRect.connect(self.onSelectRect)
+
+        self.screenRectCheck = ScreenRectCheck()
 
         keyboard.add_hotkey('f5', self.clickStart)
         keyboard.add_hotkey('f2', self.clickStop)
@@ -173,7 +176,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                     button2 = QPushButton()
                     button2.setText('확인')
                     button2.clicked.connect(
-                        partial(self.clickTableCaptureArea, row))
+                        partial(self.clickScreenRectCheck, row))
                     self.macroTable.setCellWidget(row, 2, button)
                     self.macroTable.setCellWidget(row, 3, button2)
                 elif action == 'click' or action == 'scroll':
@@ -429,6 +432,11 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         text = f"{x1},{y1},{x2},{y2}"
         # pyperclip.copy(text)
         self.macroTable.item(self.currentRow, 1).setText(text)
+
+    @pyqtSlot(int)
+    def clickScreenRectCheck(self, currentRow):
+        self.screenRectCheck = self.screenRectCheck.run(
+            self.macroTable.item(currentRow, 1).text())
 
     def lastLsFileSelect(self):
         self.lsFiles.setCurrentRow(self.lsFiles.count() - 1)
