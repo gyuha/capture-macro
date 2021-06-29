@@ -80,7 +80,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.screenRect = ScreenRect()
         self.screenRect.selectedRect.connect(self.onSelectRect)
 
-        keyboard.add_hotkey('f1', self.clickStart)
+        keyboard.add_hotkey('f5', self.clickStart)
         keyboard.add_hotkey('f2', self.clickStop)
 
     def setButtonState(self, enabled):
@@ -303,10 +303,10 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.lastLsFileSelect()
 
     def clickCapture(self):
-        file = self.core.newFilePath()
-        # get_screen(file)
-        self.addCaptureFile(file)
-        self.lastLsFileSelect()
+        for row in range(self.macroTable.rowCount()):
+            if self.macroTable.cellWidget(row, 0).currentText() == 'capture':
+                self.actionController.captureImage(
+                    self.macroTable.item(row, 1).text().strip())
 
     def pil2pixmap(self, image):
         bytesImg = io.BytesIO()

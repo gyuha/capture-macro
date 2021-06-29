@@ -50,25 +50,28 @@ class ActionController(QObject):
         except Exception as e:
             print(e)
 
+    def captureImage(self, value):
+        point = value.split(',')
+        if len(point) < 4:
+            raise Exception('Invalid capture point')
+        screenshot = QApplication.primaryScreen().grabWindow(
+            QApplication.desktop().winId())
+        rect = QRect(QPoint(int(point[0]), int(point[1])),
+                     QPoint(int(point[2]), int(point[3])))
+        outputRegion = screenshot.copy(rect)
+        path = os.path.join(self.core.newFilePath())
+        print('📢[actionController.py:67]:', path)
+        outputRegion.save(path, format='JPG', quality=90)
+        self.addImage.emit(path)
+
     def runAction(self, action, value):
         if self.running == False:
             return
 
         if action == "capture":
             try:
-                point = value.split(',')
-                if len(point) < 4:
-                    raise Exception('Invalid capture point')
-                screenshot = QApplication.primaryScreen().grabWindow(
-                    QApplication.desktop().winId())
-                rect = QRect(QPoint(int(point[0]), int(point[1])),
-                             QPoint(int(point[2]), int(point[3])))
-                outputRegion = screenshot.copy(rect)
-                path = os.path.join(self.core.newFilePath())
-                print('📢[actionController.py:67]:', path)
-                outputRegion.save(path, format='JPG', quality=90)
+                self.captureImage(value)
                 # time.sleep(0.3)
-                self.addImage.emit(path)
             except Exception as e:
                 print(e)
         elif action == "click":
