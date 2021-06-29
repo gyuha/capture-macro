@@ -7,8 +7,6 @@ macroActions = ["capture", "delay", "click", "key", "scroll"]
 defaultOptions = {
     "capturePath": "./capture",
     "windowName": "eBook",
-    "clickPoint": "",
-    "screenRect": "",
     "macro": [
         {'action': 'capture', 'value': '120,122,1610,2041'},
         {'action': 'click', 'value': '1620,1097'},

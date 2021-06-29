@@ -123,8 +123,6 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def setConfigSet(self):
         self.edtCapturePath.setText(self.core.config['capturePath'])
         self.leActiveWindowName.setText(self.core.config['windowName'])
-        self.leScreenRect.setText(self.core.config['screenRect'])
-        self.leClickPoint.setText(self.core.config['clickPoint'])
         self.macroTable.setRowCount(0)
         self.macroTable.setRowCount(len(self.core.config['macro']))
         self.macroTable.setAlternatingRowColors(True)
@@ -153,8 +151,6 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def clickConfigSave(self):
         self.core.config['macro'] = []
         self.core.config['windowName'] = self.leActiveWindowName.text()
-        self.core.config['screenRect'] = self.leScreenRect.text()
-        self.core.config['clickPoint'] = self.leClickPoint.text()
         for row in range(self.macroTable.rowCount()):
             action = self.macroTable.cellWidget(row, 0).currentText()
             value = self.macroTable.item(row, 1).text()
@@ -200,8 +196,6 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
         self.core.config['capturePath'] = self.edtCapturePath.text()
         self.core.config['windowName'] = self.leActiveWindowName.text()
-        self.core.config['screenRect'] = self.leScreenRect.text()
-        self.core.config['clickPoint'] = self.leClickPoint.text()
 
         self.core.configPath = path[0]
         self.core.config['macro'] = []

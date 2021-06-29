@@ -1023,7 +1023,7 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\", \"key\", \"scroll\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}",
+        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\", \"key\", \"scroll\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}\n    ]\n}",
         "detail": "core",
         "documentation": {}
     },
@@ -1032,7 +1032,7 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "defaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}\n    ]",
+        "peekOfCode": "defaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}\n    ]\n}\nclass mainCore(QtSingleton):",
         "detail": "core",
         "documentation": {}
     },
