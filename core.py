@@ -10,7 +10,9 @@ defaultOptions = {
     "clickPoint": "",
     "screenRect": "",
     "macro": [
-        {"capture": "", "click": "", "delay": 500}
+        {'action': 'capture', 'value': '120,122,1610,2041'},
+        {'action': 'click', 'value': '1620,1097'},
+        {'action': 'delay', 'value': '1000'}
     ]
 }
 

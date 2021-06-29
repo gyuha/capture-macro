@@ -522,6 +522,14 @@
         "documentation": {}
     },
     {
+        "label": "partial",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
         "label": "imagesPathToPdf",
         "importPath": "libs.imagesPathToPdf",
         "description": "libs.imagesPathToPdf",
@@ -574,7 +582,7 @@
         "kind": 6,
         "importPath": ".qt_for_python.uic.mainUi",
         "description": ".qt_for_python.uic.mainUi",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1328, 817)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1520, 812)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
         "detail": ".qt_for_python.uic.mainUi",
         "documentation": {}
     },
@@ -1015,7 +1023,7 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\", \"key\", \"scroll\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {\"capture\": \"\", \"click\": \"\", \"delay\": 500}\n    ]\n}",
+        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\", \"key\", \"scroll\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}",
         "detail": "core",
         "documentation": {}
     },
@@ -1024,7 +1032,7 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "defaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {\"capture\": \"\", \"click\": \"\", \"delay\": 500}\n    ]\n}\nclass mainCore(QtSingleton):",
+        "peekOfCode": "defaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"clickPoint\": \"\",\n    \"screenRect\": \"\",\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}\n    ]",
         "detail": "core",
         "documentation": {}
     },
@@ -1051,7 +1059,7 @@
         "kind": 6,
         "importPath": "mainUi",
         "description": "mainUi",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1328, 817)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        MainWindow.setObjectName(\"MainWindow\")\n        MainWindow.resize(1520, 812)\n        self.centralwidget = QtWidgets.QWidget(MainWindow)\n        self.centralwidget.setObjectName(\"centralwidget\")\n        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)\n        self.horizontalLayout_2.setObjectName(\"horizontalLayout_2\")\n        self.verticalLayout = QtWidgets.QVBoxLayout()\n        self.verticalLayout.setObjectName(\"verticalLayout\")",
         "detail": "mainUi",
         "documentation": {}
     },

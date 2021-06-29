@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1328</width>
-    <height>817</height>
+    <width>1520</width>
+    <height>812</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -144,6 +144,16 @@
             <column>
              <property name="text">
               <string>값</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>동작</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>동작2</string>
              </property>
             </column>
            </widget>
@@ -440,7 +450,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1328</width>
+     <width>1520</width>
      <height>26</height>
     </rect>
    </property>

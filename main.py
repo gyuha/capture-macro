@@ -23,6 +23,7 @@ from imageToPdfWorker import ImageToPdfWorker
 from libs.fileUtil import removePathFiles
 from util.screenPoint import ScreenPoint
 from util.screenRect import ScreenRect
+from functools import partial
 
 # form_class = uic.loadUiType("mainUi.ui")[0]
 
@@ -101,8 +102,14 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         # self.index_root = self.model.index(self.model.rootPath())
         # self.lsFiles.setRootIndex(self.index_root)
 
+    @pyqtSlot(int)
+    def clickTableCaptureArea(self, row):
+        print('📢[main.py:105]:', row)
+        print('click')
+
     def getMacroTableRow(self, row, action, value):
         actionCombo = QComboBox()
+        actionCombo.currentTextChanged.connect(self.updateMacroActions)
         actionCombo.addItems(macroActions)
         index = actionCombo.findText(action)
         if index > -1:
@@ -111,8 +118,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
         self.macroTable.setCellWidget(
             row, 0, actionCombo)
+
         item = QTableWidgetItem(value)
-        # item.setTextAlignment(Qt.AlignCenter)
         self.macroTable.setItem(row, 1, item)
 
     def setConfigSet(self):
@@ -127,6 +134,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.macroTable.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
         for row, macro in enumerate(self.core.config['macro']):
             self.getMacroTableRow(row, macro['action'], macro['value'])
+        self.updateMacroActions()
 
     @pyqtSlot(str)
     def onActionComboChange(self, txt):
@@ -134,7 +142,6 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         combo = self.sender()
         row = combo.currentRow()
         self.core.config['macro'][row]['action'] = txt
-        print(self.core.config)
 
     def clickConfigLoad(self):
         path = QFileDialog.getOpenFileName(
@@ -157,6 +164,37 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                 {"action": action, "value": value})
         self.core.saveMacro()
         QMessageBox.information(self, "Information", "저장 완료")
+
+    def updateMacroActions(self):
+        try:
+            for row in range(self.macroTable.rowCount()):
+                action = self.macroTable.cellWidget(row, 0).currentText()
+                self.macroTable.removeCellWidget(row, 2)
+                self.macroTable.removeCellWidget(row, 3)
+                if action == 'capture':
+                    button = QPushButton()
+                    button.setText('영역선택')
+                    button.clicked.connect(
+                        partial(self.clickTableCaptureArea, row))
+                    button2 = QPushButton()
+                    button2.setText('확인')
+                    button2.clicked.connect(
+                        partial(self.clickTableCaptureArea, row))
+                    self.macroTable.setCellWidget(row, 2, button)
+                    self.macroTable.setCellWidget(row, 3, button2)
+                elif action == 'click' or action == 'scroll':
+                    button = QPushButton()
+                    button.setText('포인트')
+                    button.clicked.connect(
+                        partial(self.clickTableCaptureArea, row))
+                    self.macroTable.setCellWidget(row, 2, button)
+                else:
+                    item = QTableWidgetItem()
+                    item.setFlags(item.flags() ^ Qt.ItemIsEditable)
+                    self.macroTable.setItem(row, 2, item)
+                    self.macroTable.setItem(row, 3, item)
+        except Exception as e:
+            pass
 
     def clickConfigSaveAs(self):
         path = QFileDialog.getSaveFileName(
@@ -185,12 +223,14 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def clickConfigInsert(self):
         row = self.macroTable.currentRow()
         self.macroTable.insertRow(row)
-        self.getMacroTableRow(row, '', '')
+        self.getMacroTableRow(row, 'capture', '')
+        self.updateMacroActions()
 
     def clickConfigAdd(self):
         row = self.macroTable.currentRow()
         self.macroTable.insertRow(row+1)
-        self.getMacroTableRow(row+1, '', '')
+        self.getMacroTableRow(row+1, 'capture', '')
+        self.updateMacroActions()
 
     def clickConfigRemove(self):
         row = self.macroTable.currentRow()

@@ -4,6 +4,7 @@
     "Popen",
     "ffmpeg",
     "fpdf",
+    "hbox",
     "pyautogui",
     "pydirectinput",
     "pygetwindow",
