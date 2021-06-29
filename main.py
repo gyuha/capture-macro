@@ -230,6 +230,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def clickConfigRemove(self):
         row = self.macroTable.currentRow()
         self.macroTable.removeRow(row)
+        self.updateMacroActions()
 
     def onMacroTableChanged(self):
         text = self.macroTable.currentItem().text()
