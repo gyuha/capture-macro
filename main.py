@@ -74,11 +74,9 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.savePdfWorker = ImageToPdfWorker()
         self.savePdfWorker.updateProgress.connect(self.updateProgress)
 
-        self.btnPointClick.clicked.connect(self.clickPointClick)
         self.screenPoint = ScreenPoint()
         self.screenPoint.selectPoint.connect(self.onSelectPoint)
 
-        self.btnScreenRect.clicked.connect(self.clickScreenRect)
         self.screenRect = ScreenRect()
         self.screenRect.selectedRect.connect(self.onSelectRect)
 
@@ -175,7 +173,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                     button = QPushButton()
                     button.setText('영역선택')
                     button.clicked.connect(
-                        partial(self.clickTableCaptureArea, row))
+                        partial(self.clickScreenRect, row))
                     button2 = QPushButton()
                     button2.setText('확인')
                     button2.clicked.connect(
@@ -186,7 +184,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                     button = QPushButton()
                     button.setText('포인트')
                     button.clicked.connect(
-                        partial(self.clickTableCaptureArea, row))
+                        partial(self.clickPointClick, row))
                     self.macroTable.setCellWidget(row, 2, button)
                 else:
                     item = QTableWidgetItem()
@@ -266,7 +264,6 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         return flag
 
     def clickStart(self):
-        print('📢[main.py:220]:', self.core.config['windowName'])
         self.actionController.activeWindow(self.leActiveWindowName.text())
 
         if (self.checkStop()):
@@ -416,24 +413,28 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         except Exception as e:
             print(e)
 
-    def clickPointClick(self):
+    @pyqtSlot(int)
+    def clickPointClick(self, currentRow):
+        self.currentRow = currentRow
         self.screenPoint.show()
 
     @pyqtSlot(int, int)
     def onSelectPoint(self, x, y):
         text = f"{x},{y}"
-        pyperclip.copy(text)
-        self.leClickPoint.setText(text)
+        # pyperclip.copy(text)
+        self.macroTable.item(self.currentRow, 1).setText(text)
 
-    def clickScreenRect(self):
+    @pyqtSlot(int)
+    def clickScreenRect(self, currentRow):
+        self.currentRow = currentRow
         self.screenRect = self.screenRect.run()
         self.screenRect.selectedRect.connect(self.onSelectRect)
 
     @pyqtSlot(int, int, int, int)
     def onSelectRect(self, x1, y1, x2, y2):
         text = f"{x1},{y1},{x2},{y2}"
-        pyperclip.copy(text)
-        self.leScreenRect.setText(text)
+        # pyperclip.copy(text)
+        self.macroTable.item(self.currentRow, 1).setText(text)
 
     def lastLsFileSelect(self):
         self.lsFiles.setCurrentRow(self.lsFiles.count() - 1)
