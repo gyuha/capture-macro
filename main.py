@@ -179,7 +179,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                         partial(self.clickScreenRectCheck, row))
                     self.macroTable.setCellWidget(row, 2, button)
                     self.macroTable.setCellWidget(row, 3, button2)
-                elif action == 'click' or action == 'scroll':
+                elif action == 'click' or action == 'scroll' or action == 'swipeLeft' or action == 'swipeRight':
                     button = QPushButton()
                     button.setText('포인트')
                     button.clicked.connect(

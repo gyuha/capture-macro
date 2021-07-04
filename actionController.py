@@ -96,6 +96,20 @@ class ActionController(QObject):
             pyautogui.scroll(-20)
         elif action == "key":
             pyautogui.press(value)
+        elif action == "swipeLeft":
+            point = value.split(',')
+            x = int(point[0])
+            y = int(point[1])
+            pydirectinput.moveTo(x=x, y=y, duration=0.1)
+            pydirectinput.mouseDown()
+            for i in range(4):
+                pydirectinput.move(-300, None)
+            pydirectinput.mouseUp()
+        elif action == "swipeRight":
+            point = value.split(',')
+            pyautogui.dragTo(x=int(point[0]), y=int(point[1]), duration=0.1)
+            pyautogui.dragRel(
+                x=(int(point[0]) + 50), y=int(point[1]), duration=0.2)
 
         self.actionDone.emit()
 
