@@ -380,6 +380,15 @@
         "documentation": {}
     },
     {
+        "label": "mozjpeg_lossless_optimization",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mozjpeg_lossless_optimization",
+        "description": "mozjpeg_lossless_optimization",
+        "detail": "mozjpeg_lossless_optimization",
+        "documentation": {}
+    },
+    {
         "label": "mainCore",
         "importPath": "core",
         "description": "core",

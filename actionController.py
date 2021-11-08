@@ -6,6 +6,7 @@ import pyautogui
 import pyautogui as pag
 import pygetwindow as gw
 import pydirectinput
+import mozjpeg_lossless_optimization
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -61,7 +62,19 @@ class ActionController(QObject):
         outputRegion = screenshot.copy(rect)
         path = os.path.join(self.core.newFilePath())
         print('📢[actionController.py:67]:', path)
-        outputRegion.save(path, format='JPG', quality=90)
+        outputRegion.save(path, format='JPG', quality=80)
+
+        # JPG 추가 압축히기
+        # https: // github.com/wanadev/mozjpeg-lossless-optimization
+        with open(path, "rb") as input_jpeg_file:
+            input_jpeg_bytes = input_jpeg_file.read()
+
+        output_jpeg_bytes = mozjpeg_lossless_optimization.optimize(
+            input_jpeg_bytes)
+
+        with open(path, "wb") as output_jpeg_file:
+            output_jpeg_file.write(output_jpeg_bytes)
+
         self.addImage.emit(path)
 
     def runAction(self, action, value):
