@@ -361,6 +361,15 @@
         "documentation": {}
     },
     {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
         "label": "pyautogui",
         "kind": 6,
         "isExtraImport": true,
@@ -394,6 +403,48 @@
         "importPath": "mozjpeg_lossless_optimization",
         "description": "mozjpeg_lossless_optimization",
         "detail": "mozjpeg_lossless_optimization",
+        "documentation": {}
+    },
+    {
+        "label": "mss",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mss",
+        "description": "mss",
+        "detail": "mss",
+        "documentation": {}
+    },
+    {
+        "label": "mss.tools",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mss.tools",
+        "description": "mss.tools",
+        "detail": "mss.tools",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
         "documentation": {}
     },
     {
@@ -446,37 +497,12 @@
         "documentation": {}
     },
     {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
         "label": "io",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "io",
         "description": "io",
         "detail": "io",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
         "documentation": {}
     },
     {

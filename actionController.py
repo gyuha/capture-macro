@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 import time
 
@@ -7,6 +8,11 @@ import pyautogui as pag
 import pygetwindow as gw
 import pydirectinput
 import mozjpeg_lossless_optimization
+
+import mss
+import mss.tools
+
+from PIL import Image
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -51,17 +57,28 @@ class ActionController(QObject):
         except Exception as e:
             print(e)
 
-    def captureImage(self, value):
+    def captureImage(self, value, monitor):
         point = value.split(',')
         if len(point) < 4:
             raise Exception('Invalid capture point')
-        screenshot = QApplication.primaryScreen().grabWindow(
-            QApplication.desktop().winId())
-        rect = QRect(QPoint(int(point[0]), int(point[1])),
-                     QPoint(int(point[2]), int(point[3])))
-        outputRegion = screenshot.copy(rect)
-        path = os.path.join(self.core.newFilePath())
-        outputRegion.save(path, format='JPG', quality=80)
+        
+        with mss.mss() as sct:
+            screen_num = monitor
+            if (monitor == 0):
+                screen_num = len(sct.monitors) - 1
+            mon = sct.monitors[screen_num]
+
+            monitor = {
+                "top": mon["top"] + int(point[1]),
+                "left": mon["left"] + int(point[0]),
+                "width": int(point[2]) - int(point[0]), 
+                "height": int(point[3]) - int(point[1]),
+                "mon": monitor
+            }
+            sct_img = sct.grab(monitor)
+            path = os.path.join(self.core.newFilePath())
+            img = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
+            img.save(path, "JPEG", quality=85)
 
         # JPG 추가 압축히기
         # https: // github.com/wanadev/mozjpeg-lossless-optimization
@@ -76,13 +93,13 @@ class ActionController(QObject):
 
         self.addImage.emit(path)
 
-    def runAction(self, action, value):
+    def runAction(self, action, value, monitor = 0):
         if self.running == False:
             return
 
         if action == "capture":
             try:
-                self.captureImage(value)
+                self.captureImage(value, monitor)
                 # time.sleep(0.3)
             except Exception as e:
                 print(e)

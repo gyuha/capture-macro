@@ -280,7 +280,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.selectRow = 0
         self.macroTable.selectRow(self.selectRow)
         action, value = self.getRowValues()
-        self.actionController.setAction(action, value)
+        self.actionController.setAction(action, value, self.monitorNum())
 
     def getRowValues(self):
         row = self.selectRow
@@ -296,7 +296,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             self.selectRow = 0
         self.macroTable.selectRow(self.selectRow)
         action, value = self.getRowValues()
-        self.actionController.setAction(action, value)
+        self.actionController.setAction(action, value, self.monitorNum())
 
     @pyqtSlot()
     def actionDone(self):
@@ -314,7 +314,9 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         for row in range(self.macroTable.rowCount()):
             if self.macroTable.cellWidget(row, 0).currentText() == 'capture':
                 self.actionController.captureImage(
-                    self.macroTable.item(row, 1).text().strip())
+                    self.macroTable.item(row, 1).text().strip(),
+                    self.monitorNum()
+                    )
 
     def pil2pixmap(self, image):
         bytesImg = io.BytesIO()
