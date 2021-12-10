@@ -24,6 +24,7 @@ from core import mainCore
 class ActionController(QObject):
     actionDone = pyqtSignal()
     addImage = pyqtSignal(str)
+    monitor = 0
 
     def activeWindow(self, title):
         try:
@@ -41,13 +42,15 @@ class ActionController(QObject):
         self.running = False
         self.core = mainCore()
 
-    def start(self):
+    def start(self, monitor):
         self.running = True
+        self.monitor = monitor
 
     def stop(self):
         self.running = False
 
-    def setAction(self, action, value):
+    def setAction(self, action, value, monitor):
+        self.monitor = monitor
         if action == "delay":
             timeout = int(value)
         else:
@@ -57,7 +60,7 @@ class ActionController(QObject):
         except Exception as e:
             print(e)
 
-    def captureImage(self, value, monitor):
+    def captureImage(self, value, monitor = 0):
         point = value.split(',')
         if len(point) < 4:
             raise Exception('Invalid capture point')
@@ -93,13 +96,13 @@ class ActionController(QObject):
 
         self.addImage.emit(path)
 
-    def runAction(self, action, value, monitor = 0):
+    def runAction(self, action, value):
         if self.running == False:
             return
 
         if action == "capture":
             try:
-                self.captureImage(value, monitor)
+                self.captureImage(value, self.monitor)
                 # time.sleep(0.3)
             except Exception as e:
                 print(e)
@@ -109,38 +112,48 @@ class ActionController(QObject):
                 if len(point) < 2:
                     raise Exception('Invalid click point')
                     return
-                # pyautogui.moveTo(int(point[0], int(point[1])))
-                # pyautogui.click()
-                pyautogui.moveTo(int(point[0]), int(point[1]), 0.05)
+                self.mouseMoveTo(value)
                 pydirectinput.click()
-                # pyautogui.moveTo(int(point[0]), int(point[1]), 0.2)
-                # time.sleep(0.2)
-                # pyautogui.click()
             except Exception as e:
                 print(e)
         elif action == "scroll":
             point = value.split(',')
-            if len(point) == 2:
-                pyautogui.moveTo(x=int(point[0]), y=int(point[1]))
+            self.mouseMoveTo(value)
             pyautogui.scroll(-20)
         elif action == "key":
             pyautogui.press(value)
-        elif action == "swipeLeft":
-            point = value.split(',')
-            x = int(point[0])
-            y = int(point[1])
-            pydirectinput.moveTo(x=x, y=y, duration=0.1)
-            pydirectinput.mouseDown()
-            for i in range(4):
-                pydirectinput.move(-300, None)
-            pydirectinput.mouseUp()
-        elif action == "swipeRight":
-            point = value.split(',')
-            pyautogui.dragTo(x=int(point[0]), y=int(point[1]), duration=0.1)
-            pyautogui.dragRel(
-                x=(int(point[0]) + 50), y=int(point[1]), duration=0.2)
+        # elif action == "swipeLeft":
+        #     point = value.split(',')
+        #     x = int(point[0])
+        #     y = int(point[1])
+        #     pydirectinput.moveTo(x=x, y=y, duration=0.1)
+        #     pydirectinput.mouseDown()
+        #     for i in range(4):
+        #         pydirectinput.move(-300, None)
+        #     pydirectinput.mouseUp()
+        # elif action == "swipeRight":
+        #     point = value.split(',')
+        #     pyautogui.dragTo(x=int(point[0]), y=int(point[1]), duration=0.1)
+        #     pyautogui.dragRel(
+        #         x=(int(point[0]) + 50), y=int(point[1]), duration=0.2)
 
         self.actionDone.emit()
+    
+    def mouseMoveTo(self, value):
+        point = value.split(',')
+        if len(point) < 2:
+            return
+        x = int(point[0])
+        y = int(point[1])
+
+        print('📢[actionController.py:149]: ', self.monitor)
+        screen_num = self.monitor
+        with mss.mss() as sct:
+            mon = sct.monitors[screen_num]
+        x = x + mon["left"]
+        y = y + mon["top"]
+        pyautogui.moveTo(x, y, 0.05)
+
 
     def stopAction(self):
         self.running = False

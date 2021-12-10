@@ -183,7 +183,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                         partial(self.clickScreenRectCheck, row))
                     self.macroTable.setCellWidget(row, 2, button)
                     self.macroTable.setCellWidget(row, 3, button2)
-                elif action == 'click' or action == 'scroll' or action == 'swipeLeft' or action == 'swipeRight':
+                elif action == 'click' or action == 'scroll':
                     button = QPushButton()
                     button.setText('포인트')
                     button.clicked.connect(
@@ -276,7 +276,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.selectRow = 0
         self.macroTable.selectRow(self.selectRow)
 
-        self.actionController.start()
+        self.actionController.start(self.monitorNum())
         self.selectRow = 0
         self.macroTable.selectRow(self.selectRow)
         action, value = self.getRowValues()

@@ -1089,7 +1089,7 @@
         "kind": 6,
         "importPath": "actionController",
         "description": "actionController",
-        "peekOfCode": "class ActionController(QObject):\n    actionDone = pyqtSignal()\n    addImage = pyqtSignal(str)\n    def activeWindow(self, title):\n        try:\n            # 윈도우 타이틀에 Chrome 이 포함된 모든 윈도우 수집, 리스트로 리턴\n            win = gw.getWindowsWithTitle(title)[-1]\n            if win.isActive == False:\n                pywinauto.application.Application().connect(\n                    handle=win._hWnd).top_window().set_focus()",
+        "peekOfCode": "class ActionController(QObject):\n    actionDone = pyqtSignal()\n    addImage = pyqtSignal(str)\n    monitor = 0\n    def activeWindow(self, title):\n        try:\n            # 윈도우 타이틀에 Chrome 이 포함된 모든 윈도우 수집, 리스트로 리턴\n            win = gw.getWindowsWithTitle(title)[-1]\n            if win.isActive == False:\n                pywinauto.application.Application().connect(",
         "detail": "actionController",
         "documentation": {}
     },
@@ -1107,7 +1107,7 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\",\n                \"key\", \"scroll\", \"swipeLeft\", \"swipeRight\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}\n    ]",
+        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\",\n                \"key\", \"scroll\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}\n    ]",
         "detail": "core",
         "documentation": {}
     },

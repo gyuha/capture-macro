@@ -3,7 +3,7 @@ from libs.qtSingleton import QtSingleton
 import json
 
 macroActions = ["capture", "delay", "click",
-                "key", "scroll", "swipeLeft", "swipeRight"]
+                "key", "scroll"]
 
 defaultOptions = {
     "capturePath": "./capture",
