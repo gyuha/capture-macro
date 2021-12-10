@@ -61,7 +61,6 @@ class ActionController(QObject):
                      QPoint(int(point[2]), int(point[3])))
         outputRegion = screenshot.copy(rect)
         path = os.path.join(self.core.newFilePath())
-        print('📢[actionController.py:67]:', path)
         outputRegion.save(path, format='JPG', quality=80)
 
         # JPG 추가 압축히기

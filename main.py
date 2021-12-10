@@ -14,7 +14,7 @@ from PIL import Image
 from PIL.ImageQt import ImageQt
 from PyQt5 import QtCore, uic
 from PyQt5.QtCore import QDir, Qt, pyqtSlot
-from PyQt5.QtGui import QIcon, QImage, QPixmap
+from PyQt5.QtGui import QIcon, QImage, QIntValidator, QPixmap
 from PyQt5.QtWidgets import *
 
 import mainUi
@@ -125,7 +125,11 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     def setConfigSet(self):
         self.edtCapturePath.setText(self.core.config['capturePath'])
-        self.leActiveWindowName.setText(self.core.config['windowName'])
+
+        self.onlyInt = QIntValidator()
+        self.leMonitor.setValidator(self.onlyInt)
+        self.leMonitor.setText(str(self.core.config['monitor']))
+
         self.macroTable.setRowCount(0)
         self.macroTable.setRowCount(len(self.core.config['macro']))
         self.macroTable.setAlternatingRowColors(True)
@@ -153,7 +157,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     def clickConfigSave(self):
         self.core.config['macro'] = []
-        self.core.config['windowName'] = self.leActiveWindowName.text()
+        self.core.config['monitor'] = int(self.leMonitor.text())
         for row in range(self.macroTable.rowCount()):
             action = self.macroTable.cellWidget(row, 0).currentText()
             value = self.macroTable.item(row, 1).text()
@@ -198,7 +202,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             self, 'Save File', "", "JSON (*.json)")
 
         self.core.config['capturePath'] = self.edtCapturePath.text()
-        self.core.config['windowName'] = self.leActiveWindowName.text()
+        self.core.config['monitor'] = int(self.leMonitor.text())
 
         self.core.configPath = path[0]
         self.core.config['macro'] = []
@@ -262,7 +266,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         return flag
 
     def clickStart(self):
-        self.actionController.activeWindow(self.leActiveWindowName.text())
+        # self.actionController.activeWindow(self.leActiveWindowName.text())
 
         if (self.checkStop()):
             return
@@ -414,7 +418,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     @pyqtSlot(int)
     def clickPointClick(self, currentRow):
         self.currentRow = currentRow
-        self.screenPoint.show()
+        self.screenPoint = self.screenPoint.run(self.monitorNum())
+        self.screenPoint.selectPoint.connect(self.onSelectPoint)
 
     @pyqtSlot(int, int)
     def onSelectPoint(self, x, y):
@@ -425,7 +430,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     @pyqtSlot(int)
     def clickScreenRect(self, currentRow):
         self.currentRow = currentRow
-        self.screenRect = self.screenRect.run()
+        self.screenRect = self.screenRect.run(self.monitorNum())
         self.screenRect.selectedRect.connect(self.onSelectRect)
 
     @pyqtSlot(int, int, int, int)
@@ -437,7 +442,11 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     @pyqtSlot(int)
     def clickScreenRectCheck(self, currentRow):
         self.screenRectCheck = self.screenRectCheck.run(
-            self.macroTable.item(currentRow, 1).text())
+            self.macroTable.item(currentRow, 1).text(),
+            self.monitorNum())
+    
+    def monitorNum(self):
+        return int(self.leMonitor.text())
 
     def lastLsFileSelect(self):
         self.lsFiles.setCurrentRow(self.lsFiles.count() - 1)

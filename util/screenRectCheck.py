@@ -10,10 +10,12 @@ class ScreenRectCheck(QWidget):
 
     def __init__(self, parent=None):
         super(ScreenRectCheck, self).__init__(parent)
+    
+    def setRect(self, monitor):
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.setStyleSheet('''background-color:black; ''')
         self.setWindowOpacity(0.5)
-        desktopRect = QDesktopWidget().screenGeometry()
+        desktopRect = QDesktopWidget().screenGeometry(monitor)
         self.setGeometry(desktopRect)
         # self.setCursor(Qt.CrossCursor)
         self.blackMask = QBitmap(desktopRect.size())
@@ -21,13 +23,15 @@ class ScreenRectCheck(QWidget):
         self.mask = self.blackMask.copy()
         self.setMouseTracking(True)
 
+
     @classmethod
-    def run(cls, value):
+    def run(cls, value, monitor):
         point = value.split(',')
         if len(point) < 4:
             raise Exception('Invalid capture point')
-
+        
         cls.win = cls()
+        cls.win.setRect(monitor)
         pp = QPainter(cls.win.mask)
         pen = QPen()
         pen.setStyle(Qt.NoPen)

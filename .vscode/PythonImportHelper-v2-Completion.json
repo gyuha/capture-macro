@@ -273,6 +273,14 @@
         "documentation": {}
     },
     {
+        "label": "QIntValidator",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
+        "documentation": {}
+    },
+    {
         "label": "QPixmap",
         "importPath": "PyQt5.QtGui",
         "description": "PyQt5.QtGui",
@@ -713,7 +721,7 @@
         "kind": 6,
         "importPath": "util.screenPoint",
         "description": "util.screenPoint",
-        "peekOfCode": "class ScreenPoint(QWidget):\n    selectPoint = pyqtSignal(int, int)\n    def __init__(self, parent=None):\n        super(ScreenPoint, self).__init__(parent)\n        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)\n        self.setStyleSheet('''background-color:black; ''')\n        self.setWindowOpacity(0.3)\n        desktopRect = QDesktopWidget().screenGeometry()\n        self.setGeometry(desktopRect)\n        self.setCursor(Qt.CrossCursor)",
+        "peekOfCode": "class ScreenPoint(QWidget):\n    selectPoint = pyqtSignal(int, int)\n    win = ''\n    @classmethod\n    def run(cls, monitor = 0):\n        cls.win = cls()\n        cls.win.setRect(monitor)\n        cls.win.show()\n        return cls.win\n    def __init__(self, parent=None):",
         "detail": "util.screenPoint",
         "documentation": {}
     },
@@ -722,7 +730,7 @@
         "kind": 6,
         "importPath": "util.screenRect",
         "description": "util.screenRect",
-        "peekOfCode": "class ScreenRect(QWidget):\n    selectedRect = pyqtSignal(int, int, int, int)\n    win = ''\n    @classmethod\n    def run(cls):\n        cls.win = cls()\n        cls.win.show()\n        return cls.win\n    def __init__(self, parent=None):\n        super(ScreenRect, self).__init__(parent)",
+        "peekOfCode": "class ScreenRect(QWidget):\n    selectedRect = pyqtSignal(int, int, int, int)\n    win = ''\n    @classmethod\n    def run(cls, monitor = 0):\n        cls.win = cls()\n        cls.win.setRect(monitor)\n        cls.win.show()\n        return cls.win\n    def __init__(self, parent=None):",
         "detail": "util.screenRect",
         "documentation": {}
     },
@@ -731,7 +739,7 @@
         "kind": 6,
         "importPath": "util.screenRectCheck",
         "description": "util.screenRectCheck",
-        "peekOfCode": "class ScreenRectCheck(QWidget):\n    win = ''\n    def __init__(self, parent=None):\n        super(ScreenRectCheck, self).__init__(parent)\n        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)\n        self.setStyleSheet('''background-color:black; ''')\n        self.setWindowOpacity(0.5)\n        desktopRect = QDesktopWidget().screenGeometry()\n        self.setGeometry(desktopRect)\n        # self.setCursor(Qt.CrossCursor)",
+        "peekOfCode": "class ScreenRectCheck(QWidget):\n    win = ''\n    def __init__(self, parent=None):\n        super(ScreenRectCheck, self).__init__(parent)\n    def setRect(self, monitor):\n        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)\n        self.setStyleSheet('''background-color:black; ''')\n        self.setWindowOpacity(0.5)\n        desktopRect = QDesktopWidget().screenGeometry(monitor)\n        self.setGeometry(desktopRect)",
         "detail": "util.screenRectCheck",
         "documentation": {}
     },

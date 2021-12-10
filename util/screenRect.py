@@ -20,19 +20,22 @@ class ScreenRect(QWidget):
     win = ''
 
     @classmethod
-    def run(cls):
+    def run(cls, monitor = 0):
         cls.win = cls()
+        cls.win.setRect(monitor)
         cls.win.show()
         return cls.win
 
     def __init__(self, parent=None):
         super(ScreenRect, self).__init__(parent)
+    
+    def setRect(self, monitor):
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.setStyleSheet('''background-color:black; ''')
         self.setWindowOpacity(0.4)
         # desktop = QApplication.desktop()
         # rect = desktop.availableGeometry()
-        desktopRect = QDesktopWidget().screenGeometry()
+        desktopRect = QDesktopWidget().screenGeometry(monitor)
         self.setGeometry(desktopRect)
         self.setCursor(Qt.CrossCursor)
         self.blackMask = QBitmap(desktopRect.size())
