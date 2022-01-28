@@ -82,7 +82,7 @@ class ActionController(QObject):
             sct_img = sct.grab(monitor)
             path = os.path.join(self.core.newFilePath())
             img = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
-            img.save(path, "JPEG", quality=85)
+            img.save(path, "JPEG", quality=self.core.config['imageQuality'])
 
         # JPG 추가 압축히기
         # https: // github.com/wanadev/mozjpeg-lossless-optimization

@@ -37,6 +37,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.core = mainCore()
         self.imageDiff = ImageDiff()
         self.sameCount = 0;
+        self.imageQuality = 80;
 
         self.setWindowIcon(QIcon('icon.ico'))
 
@@ -65,6 +66,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.btnDeleteAllFiles.clicked.connect(self.clickDeleteAllFiles)
 
         self.lsFiles.itemSelectionChanged.connect(self.onCaptureFileChanged)
+
+        self.hsImageQuality.valueChanged.connect(self.onImageQualityChanged)
 
         self.selectRow = 0
 
@@ -134,6 +137,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.leMonitor.setText(str(self.core.config['monitor']))
         self.leSameCount.setValidator(self.onlyInt)
         self.leSameCount.setText(str(self.core.config['sameCount']))
+        self.lbImageQuality.setText(str(self.core.config['imageQuality']))
+        self.hsImageQuality.setValue(self.core.config['imageQuality'])
 
         self.macroTable.setRowCount(0)
         self.macroTable.setRowCount(len(self.core.config['macro']))
@@ -463,6 +468,11 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.screenRectCheck = self.screenRectCheck.run(
             self.macroTable.item(currentRow, 1).text(),
             self.monitorNum())
+    
+    @pyqtSlot(int)
+    def onImageQualityChanged(self, value):
+        self.lbImageQuality.setText(str(value))
+        self.core.config['imageQuality'] = value
     
     def monitorNum(self):
         return int(self.leMonitor.text())

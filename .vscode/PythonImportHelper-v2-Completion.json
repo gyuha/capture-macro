@@ -4277,7 +4277,7 @@
         "kind": 6,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "class mainCore(QtSingleton):\n    def __init__(self):\n        super().__init__()\n        self.capturePath = './capture'\n        self.config = defaultOptions\n        self.configPath = './default.json'\n        self.loadMacro()\n        self.fileNumber = 0\n    def loadMacro(self):\n        \"\"\"",
+        "peekOfCode": "class mainCore(QtSingleton):\n    def __init__(self):\n        super().__init__()\n        self.capturePath = './capture'\n        self.config = defaultOptions\n        self.configPath = './default.json'\n        self.loadMacro()\n        self.fileNumber = 0\n        self.imageQuality = 80\n    def loadMacro(self):",
         "detail": "core",
         "documentation": {}
     },
@@ -4286,7 +4286,7 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\",\n                \"key\", \"scroll\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"monitor\": 0,\n    \"sameCount\": 3,\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},",
+        "peekOfCode": "macroActions = [\"capture\", \"delay\", \"click\",\n                \"key\", \"scroll\"]\ndefaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"monitor\": 0,\n    \"sameCount\": 3,\n    \"imageQuality\": 80,\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},",
         "detail": "core",
         "documentation": {}
     },
@@ -4295,7 +4295,7 @@
         "kind": 5,
         "importPath": "core",
         "description": "core",
-        "peekOfCode": "defaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"monitor\": 0,\n    \"sameCount\": 3,\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}\n    ]",
+        "peekOfCode": "defaultOptions = {\n    \"capturePath\": \"./capture\",\n    \"windowName\": \"eBook\",\n    \"monitor\": 0,\n    \"sameCount\": 3,\n    \"imageQuality\": 80,\n    \"macro\": [\n        {'action': 'capture', 'value': '120,122,1610,2041'},\n        {'action': 'click', 'value': '1620,1097'},\n        {'action': 'delay', 'value': '1000'}",
         "detail": "core",
         "documentation": {}
     },
@@ -4313,7 +4313,7 @@
         "kind": 6,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "class MainWindow(QMainWindow, mainUi.Ui_MainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.setupUi(self)\n        self.core = mainCore()\n        self.imageDiff = ImageDiff()\n        self.sameCount = 0;\n        self.setWindowIcon(QIcon('icon.ico'))\n        self.setConfigSet()\n        self.actionOpen.triggered.connect(self.clickConfigLoad)",
+        "peekOfCode": "class MainWindow(QMainWindow, mainUi.Ui_MainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.setupUi(self)\n        self.core = mainCore()\n        self.imageDiff = ImageDiff()\n        self.sameCount = 0;\n        self.imageQuality = 80;\n        self.setWindowIcon(QIcon('icon.ico'))\n        self.setConfigSet()",
         "detail": "main",
         "documentation": {}
     },

@@ -10,6 +10,7 @@ defaultOptions = {
     "windowName": "eBook",
     "monitor": 0,
     "sameCount": 3,
+    "imageQuality": 80,
     "macro": [
         {'action': 'capture', 'value': '120,122,1610,2041'},
         {'action': 'click', 'value': '1620,1097'},
@@ -26,6 +27,7 @@ class mainCore(QtSingleton):
         self.configPath = './default.json'
         self.loadMacro()
         self.fileNumber = 0
+        self.imageQuality = 80
 
     def loadMacro(self):
         """
