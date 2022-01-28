@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import time
+import numpy as np
 
 import pyautogui
 import pyautogui as pag
@@ -94,6 +95,7 @@ class ActionController(QObject):
         with open(path, "wb") as output_jpeg_file:
             output_jpeg_file.write(output_jpeg_bytes)
 
+        # 이미지 추가 메시지
         self.addImage.emit(path)
 
     def runAction(self, action, value):
@@ -146,7 +148,6 @@ class ActionController(QObject):
         x = int(point[0])
         y = int(point[1])
 
-        print('📢[actionController.py:149]: ', self.monitor)
         screen_num = self.monitor
         with mss.mss() as sct:
             mon = sct.monitors[screen_num]

@@ -1,10 +1,11 @@
 {
   "cSpell.words": [
     "DPAD",
-    "Popen",
     "ffmpeg",
     "fpdf",
     "hbox",
+    "imread",
+    "Popen",
     "pyautogui",
     "pydirectinput",
     "pygetwindow",
@@ -12,6 +13,7 @@
     "pyqt",
     "pywinauto",
     "scrcpy",
+    "ssim",
     "vframes"
   ],
   "[python]": {

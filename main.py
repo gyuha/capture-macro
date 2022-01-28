@@ -5,6 +5,7 @@ import re
 import sys
 import time
 from pathlib import Path
+from libs.imageDiff import ImageDiff
 from util.screenRectCheck import ScreenRectCheck
 
 import keyboard
@@ -34,6 +35,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.core = mainCore()
+        self.imageDiff = ImageDiff()
+        self.sameCount = 0;
 
         self.setWindowIcon(QIcon('icon.ico'))
 
@@ -309,6 +312,12 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def addImage(self, path):
         self.addCaptureFile(path)
         self.lastLsFileSelect()
+        if (self.imageDiff.diff(path) == True):
+            self.sameCount = self.sameCount + 1
+            if (self.sameCount > 2):
+                self.clickStop()
+        else:
+            self.sameCount = 0
 
     def clickCapture(self):
         for row in range(self.macroTable.rowCount()):
