@@ -275,6 +275,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             return
         self.setButtonState(True)
         print("start Clicked")
+        self.startFileNumber()
+        self.imageDiff.reset()
         self.macroTable.setDisabled(True)
         self.selectRow = 0
         self.macroTable.selectRow(self.selectRow)
@@ -314,8 +316,11 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.lastLsFileSelect()
         if (self.imageDiff.diff(path) == True):
             self.sameCount = self.sameCount + 1
-            if (self.sameCount > 2):
+            if (self.sameCount > 1):
                 self.clickStop()
+                for i in range(2):
+                    self.clickDeleteSelectFile()
+                    self.lastLsFileSelect()
         else:
             self.sameCount = 0
 

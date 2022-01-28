@@ -1,7 +1,5 @@
-import re
 from skimage.metrics import structural_similarity as compare_ssim
 import cv2
-import numpy as np
 
 class ImageDiff():
     def __init__(self):
@@ -16,7 +14,6 @@ class ImageDiff():
         return gray
 
     def diff(self, imagePath):
-        print('📢[imageDiff.py:18]: ', imagePath)
         if (self.preImage is None):
             self.preImage = self.readFile(imagePath)
             return False
@@ -24,6 +21,5 @@ class ImageDiff():
 
         (score, diff) = compare_ssim(self.preImage, currentImage, full=True)
         diff = (diff * 255).astype("uint8")
-        print('📢[imageDiff.py:17]: ', score)
         self.preImage = currentImage
-        return False if score > 1.0 else True
+        return True if score >= 1.0 else False

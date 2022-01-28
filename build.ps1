@@ -1,1 +1,1 @@
-pyinstaller main.spec
+pyinstaller  -F -y  main.spec

@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['.\\'],
+             pathex=['.\\', '.\\venv\\Lib\\site-packages\\cv2\\'],
              binaries=[],
              datas=[
               ('icon.ico', 'default.json')
