@@ -132,6 +132,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.onlyInt = QIntValidator()
         self.leMonitor.setValidator(self.onlyInt)
         self.leMonitor.setText(str(self.core.config['monitor']))
+        self.leSameCount.setValidator(self.onlyInt)
+        self.leSameCount.setText(str(self.core.config['sameCount']))
 
         self.macroTable.setRowCount(0)
         self.macroTable.setRowCount(len(self.core.config['macro']))
@@ -161,6 +163,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def clickConfigSave(self):
         self.core.config['macro'] = []
         self.core.config['monitor'] = int(self.leMonitor.text())
+        self.core.config['sameCount'] = int(self.leSameCount.text())
         for row in range(self.macroTable.rowCount()):
             action = self.macroTable.cellWidget(row, 0).currentText()
             value = self.macroTable.item(row, 1).text()
@@ -316,9 +319,9 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.lastLsFileSelect()
         if (self.imageDiff.diff(path) == True):
             self.sameCount = self.sameCount + 1
-            if (self.sameCount > 1):
+            if (self.sameCount >= self.maxSameCount()):
                 self.clickStop()
-                for i in range(2):
+                for i in range(self.maxSameCount()):
                     self.clickDeleteSelectFile()
                     self.lastLsFileSelect()
         else:
@@ -463,6 +466,9 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     
     def monitorNum(self):
         return int(self.leMonitor.text())
+    
+    def maxSameCount(self):
+        return int(self.leSameCount.text())
 
     def lastLsFileSelect(self):
         self.lsFiles.setCurrentRow(self.lsFiles.count() - 1)

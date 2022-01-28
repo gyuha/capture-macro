@@ -8,6 +8,8 @@ macroActions = ["capture", "delay", "click",
 defaultOptions = {
     "capturePath": "./capture",
     "windowName": "eBook",
+    "monitor": 0,
+    "sameCount": 3,
     "macro": [
         {'action': 'capture', 'value': '120,122,1610,2041'},
         {'action': 'click', 'value': '1620,1097'},

@@ -34,7 +34,7 @@
       </item>
       <item>
        <layout class="QFormLayout" name="formLayout">
-        <item row="0" column="0">
+        <item row="1" column="0">
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
@@ -47,7 +47,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
+        <item row="1" column="1">
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
            <widget class="QLineEdit" name="edtCapturePath">
@@ -83,24 +83,7 @@
           </item>
          </layout>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_8">
-          <property name="text">
-           <string>모니터 번호</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="leMonitor">
-          <property name="text">
-           <string>0</string>
-          </property>
-          <property name="placeholderText">
-           <string>모니터 번호</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
+        <item row="3" column="0">
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
@@ -114,46 +97,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0,0">
-          <item>
-           <widget class="QTableWidget" name="macroTable">
-            <property name="font">
-             <font>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="rowCount">
-             <number>0</number>
-            </property>
-            <attribute name="verticalHeaderVisible">
-             <bool>true</bool>
-            </attribute>
-            <attribute name="verticalHeaderHighlightSections">
-             <bool>true</bool>
-            </attribute>
-            <column>
-             <property name="text">
-              <string>명령어</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>값</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>동작</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>동작2</string>
-             </property>
-            </column>
-           </widget>
-          </item>
+         <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,0">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,1">
             <item>
@@ -179,76 +123,195 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
             <item>
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>현재 : </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="leCurrentCount">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="inputMask">
-               <string>9999</string>
-              </property>
-              <property name="text">
-               <string>1</string>
-              </property>
-              <property name="alignment">
+             <layout class="QFormLayout" name="formLayout_4">
+              <property name="labelAlignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-             </widget>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>모니터 번호</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="leMonitor">
+                <property name="text">
+                 <string>0</string>
+                </property>
+                <property name="placeholderText">
+                 <string>모니터 번호</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>중복</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="leSameCount">
+                <property name="text">
+                 <string>3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="label_9">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>- 연속으로 같은 이미지 일 경우 중단</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>/ 전체 :</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="leTotalCount">
-              <property name="inputMask">
-               <string>9999</string>
-              </property>
-              <property name="text">
-               <string>1000</string>
-              </property>
-              <property name="alignment">
+             <layout class="QFormLayout" name="formLayout_2">
+              <property name="labelAlignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-             </widget>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>현재 : </string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="leCurrentCount">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="inputMask">
+                 <string>9999</string>
+                </property>
+                <property name="text">
+                 <string>1</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>전체 :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="leTotalCount">
+                <property name="inputMask">
+                 <string>9999</string>
+                </property>
+                <property name="text">
+                 <string>1000</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="label_10">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>- 캡쳐 할 페이지 수</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <item>
-             <widget class="QPushButton" name="btnConfigInsert">
-              <property name="text">
-               <string>명령어 삽입</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btnConfigAdd">
-              <property name="text">
-               <string>명령어 추가</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btnConfigRemove">
-              <property name="text">
-               <string>명령어 삭제</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <layout class="QHBoxLayout" name="horizontalLayout_6"/>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="1">
+         <widget class="QTableWidget" name="macroTable">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>명령어</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>값</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>동작</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>동작2</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="btnConfigInsert">
+            <property name="text">
+             <string>명령어 삽입</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnConfigAdd">
+            <property name="text">
+             <string>명령어 추가</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnConfigRemove">
+            <property name="text">
+             <string>명령어 삭제</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -394,6 +457,12 @@
     </item>
     <item>
      <widget class="QLabel" name="lbPreview">
+      <property name="sizeIncrement">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <weight>50</weight>
