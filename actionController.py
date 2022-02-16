@@ -149,7 +149,8 @@ class ActionController(QObject):
 
         screen_num = self.monitor
         with mss.mss() as sct:
-            mon = sct.monitors[screen_num]
+            mon = sct.monitors[screen_num + 1]
+
         x = x + mon["left"]
         y = y + mon["top"]
         pyautogui.moveTo(x, y, 0.05)
