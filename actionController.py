@@ -68,9 +68,7 @@ class ActionController(QObject):
         
         with mss.mss() as sct:
             screen_num = monitor
-            if (monitor == 0):
-                screen_num = len(sct.monitors) - 1
-            mon = sct.monitors[screen_num]
+            mon = sct.monitors[screen_num + 1]
 
             monitor = {
                 "top": mon["top"] + int(point[1]),
@@ -80,8 +78,9 @@ class ActionController(QObject):
                 "mon": monitor
             }
             sct_img = sct.grab(monitor)
-            path = os.path.join(self.core.newFilePath())
             img = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
+
+            path = os.path.join(self.core.newFilePath())
             img.save(path, "JPEG", quality=self.core.config['imageQuality'])
 
         # JPG 추가 압축히기
