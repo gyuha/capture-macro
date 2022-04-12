@@ -5,18 +5,18 @@
 ### Install files...
 
 #### Windows
-파이썬을 3.8.10을 설치해 준다.
+파이썬을 3.9.6을 설치해 준다.
 pyenv-win으로 설치하면 조금 쉽다.
 
 ### pyenv 설치하기
 
 * choco : `choco install pyenv-win`
 
-### 3.8.10 파이썬을 설치
+### 3.9.6 파이썬을 설치
 
 ```
-pyenv install 3.8.10
-pyenv local 3.8.10
+pyenv install 3.9.6
+pyenv local 3.9.6
 python --version
 ```
 

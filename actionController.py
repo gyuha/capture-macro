@@ -117,12 +117,18 @@ class ActionController(QObject):
                 pydirectinput.click()
             except Exception as e:
                 print(e)
+        elif action == "key":
+            try:
+                key = value
+                pydirectinput.keyDown(key)
+                time.sleep(0.3)
+                pydirectinput.keyUp(key)
+            except Exception as e:
+                print(e)
         elif action == "scroll":
             point = value.split(',')
             self.mouseMoveTo(value)
             pyautogui.scroll(-20)
-        elif action == "key":
-            pyautogui.press(value)
         # elif action == "swipeLeft":
         #     point = value.split(',')
         #     x = int(point[0])
