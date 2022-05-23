@@ -485,7 +485,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     def clickDeleteAllFiles(self):
         ret = QMessageBox.question(
-            self, "경고", "정말 모든 파일을 지우시겠습니까?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            self, "경고", "정말 모든 파일을 지우시겠습니까?",  QMessageBox.No |QMessageBox.Yes , QMessageBox.Yes)
 
         if ret == QMessageBox.Yes:
             try:
