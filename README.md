@@ -1,10 +1,11 @@
 # adb-capture
 
-
 ## Use
+
 ### Install files...
 
 #### Windows
+
 파이썬을 3.9.6을 설치해 준다.
 pyenv-win으로 설치하면 조금 쉽다.
 
@@ -38,10 +39,10 @@ python --version
 ```
 
 # ui to py
+
 ```
 pyuic5.exe -x .\mainUi.ui -o .\mainUi.py
 ```
-
 
 #### Linux
 
@@ -54,11 +55,10 @@ $ pip install -r requirements.txt
 
 ------
 
-
-
 ## Make Install file..
 
 ### .spec 파일 만들기
+
 ```
 pyi-makespec [--onefile] main.py
 ```
@@ -68,26 +68,30 @@ pyinstaller main.spec
 ```
 
 또는
+
 ### 직접 빌드하기
+
 ```
 pyinstaller --onefile -F --log-level DEBUG --debug main.py
 ```
 
-
 # Update all package
+
 ```
 pip freeze | %{$_.split('==')[0]} | %{pip install --upgrade $_}
 ```
 
-
 ## Reference
+
 * [Convert Images to PDF using Python](https://datatofish.com/images-to-pdf-python/)
 
 # Note
+
 - 다른 윈도우 클릭시 클릭이 되지 않는 경우에는 프로그램을 관리자 모드로 실행 해 주면 된다.
 
 # Todo
-- [ ] 다중모니터 지원 기능 라이브러리 개선
-- [ ] 디스플레이 설정 추가
+
+- [x] 다중모니터 지원 기능 라이브러리 개선
+- [x] 디스플레이 설정 추가
 - [ ] 스와이프 기능 개선
 - [x] 이미지가 3장 연속 중복이면 중단 하기
