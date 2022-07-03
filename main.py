@@ -494,6 +494,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                     files = glob.glob(path)
                     removePathFiles(files)
                 self.lsFiles.clear()
+                self.lbPreview.clear()
                 self.startFileNumber()
             except Exception as e:
                 print(e)
