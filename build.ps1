@@ -1,1 +1,1 @@
-pyinstaller  -F -y  main.spec
+pyinstaller  -F -y --uac-admin main.spec
