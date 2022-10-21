@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1520</width>
-    <height>812</height>
+    <width>1458</width>
+    <height>832</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,6 @@
          <font>
           <family>Tahoma</family>
           <pointsize>16</pointsize>
-          <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
@@ -38,7 +37,6 @@
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -53,7 +51,6 @@
            <widget class="QLineEdit" name="edtCapturePath">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -69,7 +66,6 @@
            <widget class="QPushButton" name="btnPathSelect">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -87,7 +83,6 @@
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -104,7 +99,6 @@
              <widget class="QLabel" name="label_6">
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -278,7 +272,6 @@
           </property>
           <property name="font">
            <font>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -346,7 +339,6 @@
          <widget class="QPushButton" name="btnCapture">
           <property name="font">
            <font>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -359,7 +351,6 @@
          <widget class="QPushButton" name="btnStart">
           <property name="font">
            <font>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -372,7 +363,6 @@
          <widget class="QPushButton" name="btnStop">
           <property name="font">
            <font>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -389,7 +379,6 @@
      <widget class="Line" name="line">
       <property name="font">
        <font>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -488,7 +477,6 @@
       </property>
       <property name="font">
        <font>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -507,8 +495,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1520</width>
-     <height>21</height>
+     <width>1458</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

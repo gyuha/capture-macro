@@ -8,7 +8,8 @@ a = Analysis(['main.py'],
              pathex=['.\\', '.\\venv\\Lib\\site-packages\\cv2\\'],
              binaries=[],
              datas=[
-              ('icon.ico', 'default.json')
+              ('icon.ico', './'),
+              ('default.json', './')
              ],
              hiddenimports=[],
              hookspath=[],
