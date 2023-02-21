@@ -1,4 +1,22 @@
-# adb-capture
+# Capture Macro
+
+- [Capture Macro](#capture-macro)
+  - [Use](#use)
+    - [Install files...](#install-files)
+      - [Windows](#windows)
+    - [pyenv 설치하기](#pyenv-설치하기)
+    - [3.9.6 파이썬을 설치](#396-파이썬을-설치)
+    - [파이썬 가상 환경 만들어 주기](#파이썬-가상-환경-만들어-주기)
+  - [ui to py](#ui-to-py)
+      - [Linux](#linux)
+  - [Make Install file..](#make-install-file)
+    - [.spec 파일 만들기](#spec-파일-만들기)
+    - [직접 빌드하기](#직접-빌드하기)
+  - [Update all package](#update-all-package)
+  - [Reference](#reference)
+  - [Note](#note)
+  - [Todo](#todo)
+
 
 ## Use
 
@@ -38,7 +56,7 @@ python --version
 > pip install -r requirements.txt
 ```
 
-# ui to py
+## ui to py
 
 ```
 pyuic5.exe -x .\mainUi.ui -o .\mainUi.py
@@ -75,7 +93,7 @@ pyinstaller main.spec
 pyinstaller --onefile -F --log-level DEBUG --debug main.py
 ```
 
-# Update all package
+## Update all package
 
 ```
 pip freeze | %{$_.split('==')[0]} | %{pip install --upgrade $_}
@@ -85,11 +103,11 @@ pip freeze | %{$_.split('==')[0]} | %{pip install --upgrade $_}
 
 * [Convert Images to PDF using Python](https://datatofish.com/images-to-pdf-python/)
 
-# Note
+## Note
 
 - 다른 윈도우 클릭시 클릭이 되지 않는 경우에는 프로그램을 관리자 모드로 실행 해 주면 된다.
 
-# Todo
+## Todo
 
 - [x] 다중모니터 지원 기능 라이브러리 개선
 - [x] 디스플레이 설정 추가
