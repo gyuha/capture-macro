@@ -84,7 +84,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.formLayout_4 = QtWidgets.QFormLayout()
-        self.formLayout_4.setLabelAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.formLayout_4.setLabelAlignment(
+            QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter
+        )
         self.formLayout_4.setObjectName("formLayout_4")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setObjectName("label_8")
@@ -97,7 +99,9 @@ class Ui_MainWindow(object):
         self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_7)
         self.leSameCount = QtWidgets.QLineEdit(self.centralwidget)
         self.leSameCount.setObjectName("leSameCount")
-        self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.leSameCount)
+        self.formLayout_4.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.leSameCount
+        )
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
         self.label_9.setMaximumSize(QtCore.QSize(16777215, 20))
         self.label_9.setObjectName("label_9")
@@ -108,7 +112,9 @@ class Ui_MainWindow(object):
         self.hsImageQuality.setProperty("value", 80)
         self.hsImageQuality.setOrientation(QtCore.Qt.Horizontal)
         self.hsImageQuality.setObjectName("hsImageQuality")
-        self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.hsImageQuality)
+        self.formLayout_4.setWidget(
+            3, QtWidgets.QFormLayout.FieldRole, self.hsImageQuality
+        )
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setObjectName("label_10")
         self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_10)
@@ -116,34 +122,50 @@ class Ui_MainWindow(object):
         self.lbImageQuality.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.lbImageQuality.setAlignment(QtCore.Qt.AlignCenter)
         self.lbImageQuality.setObjectName("lbImageQuality")
-        self.formLayout_4.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lbImageQuality)
+        self.formLayout_4.setWidget(
+            4, QtWidgets.QFormLayout.FieldRole, self.lbImageQuality
+        )
         self.horizontalLayout_8.addLayout(self.formLayout_4)
         self.formLayout_2 = QtWidgets.QFormLayout()
-        self.formLayout_2.setLabelAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.formLayout_2.setLabelAlignment(
+            QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter
+        )
         self.formLayout_2.setObjectName("formLayout_2")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setObjectName("label_5")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_5)
         self.leCurrentCount = QtWidgets.QLineEdit(self.centralwidget)
         self.leCurrentCount.setEnabled(False)
-        self.leCurrentCount.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.leCurrentCount.setAlignment(
+            QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter
+        )
         self.leCurrentCount.setObjectName("leCurrentCount")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.leCurrentCount)
+        self.formLayout_2.setWidget(
+            0, QtWidgets.QFormLayout.FieldRole, self.leCurrentCount
+        )
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setObjectName("label_3")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_3)
         self.leTotalCount = QtWidgets.QLineEdit(self.centralwidget)
-        self.leTotalCount.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.leTotalCount.setAlignment(
+            QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter
+        )
         self.leTotalCount.setObjectName("leTotalCount")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.leTotalCount)
+        self.formLayout_2.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.leTotalCount
+        )
         self.horizontalLayout_8.addLayout(self.formLayout_2)
         self.verticalLayout_4.addLayout(self.horizontalLayout_8)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.verticalLayout_4.addLayout(self.horizontalLayout_6)
-        self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_4)
+        self.formLayout.setLayout(
+            2, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_4
+        )
         self.macroTable = QtWidgets.QTableWidget(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.macroTable.sizePolicy().hasHeightForWidth())
@@ -177,7 +199,9 @@ class Ui_MainWindow(object):
         self.btnConfigRemove = QtWidgets.QPushButton(self.centralwidget)
         self.btnConfigRemove.setObjectName("btnConfigRemove")
         self.horizontalLayout_4.addWidget(self.btnConfigRemove)
-        self.formLayout.setLayout(4, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_4)
+        self.formLayout.setLayout(
+            4, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_4
+        )
         self.verticalLayout.addLayout(self.formLayout)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -233,7 +257,9 @@ class Ui_MainWindow(object):
         self.btnToPdf = QtWidgets.QPushButton(self.centralwidget)
         self.btnToPdf.setObjectName("btnToPdf")
         self.horizontalLayout_3.addWidget(self.btnToPdf)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum
+        )
         self.horizontalLayout_3.addItem(spacerItem)
         self.btnDeleteFile = QtWidgets.QPushButton(self.centralwidget)
         self.btnDeleteFile.setObjectName("btnDeleteFile")
@@ -305,7 +331,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "현재 페이지"))
         self.leCurrentCount.setInputMask(_translate("MainWindow", "9999"))
         self.leCurrentCount.setText(_translate("MainWindow", "1"))
-        self.label_3.setText(_translate("MainWindow", "전체 페이지 수\'"))
+        self.label_3.setText(_translate("MainWindow", "전체 페이지 수'"))
         self.leTotalCount.setInputMask(_translate("MainWindow", "9999"))
         self.leTotalCount.setText(_translate("MainWindow", "1000"))
         item = self.macroTable.horizontalHeaderItem(0)
@@ -335,6 +361,7 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

@@ -1,20 +1,21 @@
 from skimage.metrics import structural_similarity as compare_ssim
-import cv2
+from cv2 import cv2
 
-class ImageDiff():
+
+class ImageDiff:
     def __init__(self):
         self.preImage = None
 
     def reset(self):
         self.preImage = None
-    
+
     def readFile(self, filePath):
         image = cv2.imread(filePath)
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         return gray
 
     def diff(self, imagePath):
-        if (self.preImage is None):
+        if self.preImage is None:
             self.preImage = self.readFile(imagePath)
             return False
         currentImage = self.readFile(imagePath)

@@ -2,7 +2,7 @@ import os
 from fpdf import FPDF
 
 
-def imagesPathToPdf(imagesPath, pdfFileName='bookTItle.pdf'):
+def imagesPathToPdf(imagesPath, pdfFileName="bookTItle.pdf"):
     pdf = FPDF()
     # imagelist is the list with all image filenames
     imageList = []

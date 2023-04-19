@@ -11,6 +11,7 @@ class QtSingleton(QObject):
 
 
 if __name__ == "__main__":
+
     class AA(QtSingleton):
         def __init__(self):
             super().__init__()

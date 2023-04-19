@@ -36,19 +36,19 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.setupUi(self)
         self.core = mainCore()
         self.imageDiff = ImageDiff()
-        self.sameCount = 0;
-        self.imageQuality = 80;
+        self.sameCount = 0
+        self.imageQuality = 80
 
-        self.setWindowIcon(QIcon('icon.ico'))
+        self.setWindowIcon(QIcon("icon.ico"))
 
         self.setConfigSet()
 
         self.actionOpen.triggered.connect(self.clickConfigLoad)
-        self.actionOpen.setShortcut('Ctrl+O')
+        self.actionOpen.setShortcut("Ctrl+O")
         self.actionSave.triggered.connect(self.clickConfigSave)
-        self.actionSave.setShortcut('Ctrl+S')
+        self.actionSave.setShortcut("Ctrl+S")
         self.actionSaveAs.triggered.connect(self.clickConfigSaveAs)
-        self.actionSaveAs.setShortcut('Ctrl+Shift+S')
+        self.actionSaveAs.setShortcut("Ctrl+Shift+S")
 
         self.lbConfigFilePath.setText(self.core.configPath)
         self.btnConfigInsert.clicked.connect(self.clickConfigInsert)
@@ -89,8 +89,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
         self.screenRectCheck = ScreenRectCheck()
 
-        keyboard.add_hotkey('f5', self.clickStart)
-        keyboard.add_hotkey('f2', self.clickStop)
+        keyboard.add_hotkey("f5", self.clickStart)
+        keyboard.add_hotkey("f2", self.clickStop)
 
     def setButtonState(self, enabled):
         bWorking = enabled
@@ -111,8 +111,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     @pyqtSlot(int)
     def clickTableCaptureArea(self, row):
-        print('📢[main.py:105]:', row)
-        print('click')
+        print("📢[main.py:105]:", row)
+        print("click")
 
     def getMacroTableRow(self, row, action, value):
         actionCombo = QComboBox()
@@ -123,30 +123,29 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             actionCombo.setCurrentIndex(index)
         # actionCombo.currentTextChanged.connect(self.onActionComboChange)
 
-        self.macroTable.setCellWidget(
-            row, 0, actionCombo)
+        self.macroTable.setCellWidget(row, 0, actionCombo)
 
         item = QTableWidgetItem(value)
         self.macroTable.setItem(row, 1, item)
 
     def setConfigSet(self):
-        self.edtCapturePath.setText(self.core.config['capturePath'])
+        self.edtCapturePath.setText(self.core.config["capturePath"])
 
         self.onlyInt = QIntValidator()
         self.leMonitor.setValidator(self.onlyInt)
-        self.leMonitor.setText(str(self.core.config['monitor']))
+        self.leMonitor.setText(str(self.core.config["monitor"]))
         self.leSameCount.setValidator(self.onlyInt)
-        self.leSameCount.setText(str(self.core.config['sameCount']))
-        self.lbImageQuality.setText(str(self.core.config['imageQuality']))
-        self.hsImageQuality.setValue(self.core.config['imageQuality'])
+        self.leSameCount.setText(str(self.core.config["sameCount"]))
+        self.lbImageQuality.setText(str(self.core.config["imageQuality"]))
+        self.hsImageQuality.setValue(self.core.config["imageQuality"])
 
         self.macroTable.setRowCount(0)
-        self.macroTable.setRowCount(len(self.core.config['macro']))
+        self.macroTable.setRowCount(len(self.core.config["macro"]))
         self.macroTable.setAlternatingRowColors(True)
         self.macroTable.setColumnWidth(0, 100)
         self.macroTable.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
-        for row, macro in enumerate(self.core.config['macro']):
-            self.getMacroTableRow(row, macro['action'], macro['value'])
+        for row, macro in enumerate(self.core.config["macro"]):
+            self.getMacroTableRow(row, macro["action"], macro["value"])
         self.updateMacroActions()
 
     @pyqtSlot(str)
@@ -154,11 +153,12 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         # print(txt)
         combo = self.sender()
         row = combo.currentRow()
-        self.core.config['macro'][row]['action'] = txt
+        self.core.config["macro"][row]["action"] = txt
 
     def clickConfigLoad(self):
         path = QFileDialog.getOpenFileName(
-            self, "Select Config file", "", "JSON (*.json)")
+            self, "Select Config file", "", "JSON (*.json)"
+        )
         if path[0]:
             self.core.configPath = path[0]
             self.lbConfigFilePath.setText(self.core.configPath)
@@ -166,14 +166,13 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             self.setConfigSet()
 
     def clickConfigSave(self):
-        self.core.config['macro'] = []
-        self.core.config['monitor'] = int(self.leMonitor.text())
-        self.core.config['sameCount'] = int(self.leSameCount.text())
+        self.core.config["macro"] = []
+        self.core.config["monitor"] = int(self.leMonitor.text())
+        self.core.config["sameCount"] = int(self.leSameCount.text())
         for row in range(self.macroTable.rowCount()):
             action = self.macroTable.cellWidget(row, 0).currentText()
             value = self.macroTable.item(row, 1).text()
-            self.core.config['macro'].append(
-                {"action": action, "value": value})
+            self.core.config["macro"].append({"action": action, "value": value})
         self.core.saveMacro()
         QMessageBox.information(self, "Information", "저장 완료")
 
@@ -183,22 +182,19 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                 action = self.macroTable.cellWidget(row, 0).currentText()
                 self.macroTable.removeCellWidget(row, 2)
                 self.macroTable.removeCellWidget(row, 3)
-                if action == 'capture':
+                if action == "capture":
                     button = QPushButton()
-                    button.setText('영역선택')
-                    button.clicked.connect(
-                        partial(self.clickScreenRect, row))
+                    button.setText("영역선택")
+                    button.clicked.connect(partial(self.clickScreenRect, row))
                     button2 = QPushButton()
-                    button2.setText('확인')
-                    button2.clicked.connect(
-                        partial(self.clickScreenRectCheck, row))
+                    button2.setText("확인")
+                    button2.clicked.connect(partial(self.clickScreenRectCheck, row))
                     self.macroTable.setCellWidget(row, 2, button)
                     self.macroTable.setCellWidget(row, 3, button2)
-                elif action == 'click' or action == 'scroll':
+                elif action == "click" or action == "scroll":
                     button = QPushButton()
-                    button.setText('포인트')
-                    button.clicked.connect(
-                        partial(self.clickPointClick, row))
+                    button.setText("포인트")
+                    button.clicked.connect(partial(self.clickPointClick, row))
                     self.macroTable.setCellWidget(row, 2, button)
                 else:
                     item = QTableWidgetItem()
@@ -209,20 +205,18 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             pass
 
     def clickConfigSaveAs(self):
-        path = QFileDialog.getSaveFileName(
-            self, 'Save File', "", "JSON (*.json)")
+        path = QFileDialog.getSaveFileName(self, "Save File", "", "JSON (*.json)")
 
-        self.core.config['capturePath'] = self.edtCapturePath.text()
-        self.core.config['monitor'] = int(self.leMonitor.text())
+        self.core.config["capturePath"] = self.edtCapturePath.text()
+        self.core.config["monitor"] = int(self.leMonitor.text())
 
         self.core.configPath = path[0]
-        self.core.config['macro'] = []
+        self.core.config["macro"] = []
 
         for row in range(self.macroTable.rowCount()):
             action = self.macroTable.cellWidget(row, 0).currentText()
             value = self.macroTable.item(row, 1).text()
-            self.core.config['macro'].append(
-                {"action": action, "value": value})
+            self.core.config["macro"].append({"action": action, "value": value})
         self.core.saveMacro()
 
         self.lbConfigFilePath.setText(self.core.configPath)
@@ -233,13 +227,13 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def clickConfigInsert(self):
         row = self.macroTable.currentRow()
         self.macroTable.insertRow(row)
-        self.getMacroTableRow(row, 'capture', '')
+        self.getMacroTableRow(row, "capture", "")
         self.updateMacroActions()
 
     def clickConfigAdd(self):
         row = self.macroTable.currentRow()
-        self.macroTable.insertRow(row+1)
-        self.getMacroTableRow(row+1, 'capture', '')
+        self.macroTable.insertRow(row + 1)
+        self.getMacroTableRow(row + 1, "capture", "")
         self.updateMacroActions()
 
     def clickConfigRemove(self):
@@ -279,7 +273,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def clickStart(self):
         # self.actionController.activeWindow(self.leActiveWindowName.text())
 
-        if (self.checkStop()):
+        if self.checkStop():
             return
         self.setButtonState(True)
         print("start Clicked")
@@ -302,7 +296,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         return (action, value)
 
     def nextAction(self):
-        if (self.checkStop()):
+        if self.checkStop():
             return
         self.selectRow = self.selectRow + 1
         if self.selectRow >= self.macroTable.rowCount():
@@ -313,18 +307,18 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     @pyqtSlot()
     def actionDone(self):
-        if (self.checkStop()):
+        if self.checkStop():
             return
         self.nextAction()
         self.leCurrentCount.setText(str(self.core.fileNumber))
 
-    @ pyqtSlot(str)
+    @pyqtSlot(str)
     def addImage(self, path):
         self.addCaptureFile(path)
         self.lastLsFileSelect()
-        if (self.imageDiff.diff(path) == True):
+        if self.imageDiff.diff(path) == True:
             self.sameCount = self.sameCount + 1
-            if (self.sameCount >= self.maxSameCount()):
+            if self.sameCount >= self.maxSameCount():
                 self.clickStop()
                 for i in range(self.maxSameCount()):
                     self.clickDeleteSelectFile()
@@ -334,15 +328,14 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     def clickCapture(self):
         for row in range(self.macroTable.rowCount()):
-            if self.macroTable.cellWidget(row, 0).currentText() == 'capture':
+            if self.macroTable.cellWidget(row, 0).currentText() == "capture":
                 self.actionController.captureImage(
-                    self.macroTable.item(row, 1).text().strip(),
-                    self.monitorNum()
-                    )
+                    self.macroTable.item(row, 1).text().strip(), self.monitorNum()
+                )
 
     def pil2pixmap(self, image):
         bytesImg = io.BytesIO()
-        image.save(bytesImg, format='JPEG')
+        image.save(bytesImg, format="JPEG")
 
         qImg = QImage()
         qImg.loadFromData(bytesImg.getvalue())
@@ -360,7 +353,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     def startFileNumber(self):
         files = os.listdir(self.core.capturePath)
-        p = re.compile('^\d+.jpg$')
+        p = re.compile("^\d+.jpg$")
         files = [s for s in files if p.match(s)]
         if len(files) == 0:
             self.core.fileNumber = 0
@@ -394,11 +387,10 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def previewDisplay(self, path):
         pix = QPixmap()
         pix.load(path)
-        pix = pix.scaledToWidth(self.lbPreview.width(),
-                                Qt.SmoothTransformation)
+        pix = pix.scaledToWidth(self.lbPreview.width(), Qt.SmoothTransformation)
         self.lbPreview.setPixmap(pix)
 
-    @ pyqtSlot(int, str)
+    @pyqtSlot(int, str)
     def updateProgress(self, count, label):
         if not self.progressDialog.wasCanceled():
             self.progressDialog.setLabelText(label)
@@ -407,8 +399,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             QMessageBox.warning(self, "Save file", "abort...")
 
     def clickToPdf(self):
-        fileName = QFileDialog.getSaveFileName(
-            self, 'Save file', '', '.pdf')
+        fileName = QFileDialog.getSaveFileName(self, "Save file", "", ".pdf")
         if not fileName:
             return
         filePath = fileName[0]
@@ -417,9 +408,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         if not fileName[0].endswith(".pdf"):
             filePath = filePath + ".pdf"
 
-        self.progressDialog = QProgressDialog(
-            "Save to pdf", "Cancel", 0, 100, self)
-        self.progressDialog.setWindowTitle('Save to pdf')
+        self.progressDialog = QProgressDialog("Save to pdf", "Cancel", 0, 100, self)
+        self.progressDialog.setWindowTitle("Save to pdf")
 
         self.savePdfWorker.setFiles(self.core.capturePath, filePath)
         self.savePdfWorker.start()
@@ -466,17 +456,17 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     @pyqtSlot(int)
     def clickScreenRectCheck(self, currentRow):
         self.screenRectCheck = self.screenRectCheck.run(
-            self.macroTable.item(currentRow, 1).text(),
-            self.monitorNum())
-    
+            self.macroTable.item(currentRow, 1).text(), self.monitorNum()
+        )
+
     @pyqtSlot(int)
     def onImageQualityChanged(self, value):
         self.lbImageQuality.setText(str(value))
-        self.core.config['imageQuality'] = value
-    
+        self.core.config["imageQuality"] = value
+
     def monitorNum(self):
         return int(self.leMonitor.text())
-    
+
     def maxSameCount(self):
         return int(self.leSameCount.text())
 
@@ -485,11 +475,16 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
     def clickDeleteAllFiles(self):
         ret = QMessageBox.question(
-            self, "경고", "정말 모든 파일을 지우시겠습니까?",  QMessageBox.No |QMessageBox.Yes , QMessageBox.Yes)
+            self,
+            "경고",
+            "정말 모든 파일을 지우시겠습니까?",
+            QMessageBox.No | QMessageBox.Yes,
+            QMessageBox.Yes,
+        )
 
         if ret == QMessageBox.Yes:
             try:
-                for file in ['*.png', '*.jpg']:
+                for file in ["*.png", "*.jpg"]:
                     path = os.path.join(self.core.capturePath, file)
                     files = glob.glob(path)
                     removePathFiles(files)

@@ -7,10 +7,10 @@ import sys
 
 class ScreenPoint(QWidget):
     selectPoint = pyqtSignal(int, int)
-    win = ''
+    win = ""
 
     @classmethod
-    def run(cls, monitor = 0):
+    def run(cls, monitor=0):
         cls.win = cls()
         cls.win.setRect(monitor)
         cls.win.show()
@@ -18,10 +18,10 @@ class ScreenPoint(QWidget):
 
     def __init__(self, parent=None):
         super(ScreenPoint, self).__init__(parent)
-    
+
     def setRect(self, monitor):
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
-        self.setStyleSheet('''background-color:black; ''')
+        self.setStyleSheet("""background-color:black; """)
         self.setWindowOpacity(0.3)
         desktopRect = QDesktopWidget().screenGeometry(monitor)
         self.setGeometry(desktopRect)
@@ -37,7 +37,7 @@ class ScreenPoint(QWidget):
             self.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # app = QApplication.instance() or QApplication(sys.argv)
     # WScreenShot.run()
     # app.exec_()
