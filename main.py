@@ -316,7 +316,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
     def addImage(self, path):
         self.addCaptureFile(path)
         self.lastLsFileSelect()
-        if self.imageDiff.diff(path) == True:
+        if self.imageDiff.diff(path) is True:
             self.sameCount = self.sameCount + 1
             if self.sameCount >= self.maxSameCount():
                 self.clickStop()
@@ -327,6 +327,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
             self.sameCount = 0
 
     def clickCapture(self):
+        self.imageDiff.reset()
         for row in range(self.macroTable.rowCount()):
             if self.macroTable.cellWidget(row, 0).currentText() == "capture":
                 self.actionController.captureImage(

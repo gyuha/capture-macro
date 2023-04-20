@@ -1,25 +1,15 @@
-import os
-import re
-import sys
 import time
-import numpy as np
 
-import pyautogui
-import pyautogui as pag
-import pygetwindow as gw
-import pydirectinput
-import mozjpeg_lossless_optimization
-
-import mss
 import mss.tools
-
-from PIL import Image
-
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
+import pyautogui
+import pydirectinput
+import pygetwindow as gw
 from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 from core import mainCore
+from util.screenCapture import ScreenCapture
 
 
 class ActionController(QObject):
@@ -31,9 +21,10 @@ class ActionController(QObject):
         try:
             # 윈도우 타이틀에 Chrome 이 포함된 모든 윈도우 수집, 리스트로 리턴
             win = gw.getWindowsWithTitle(title)[-1]
-            if win.isActive == False:
+            if win.isActive is False:
                 pywinauto.application.Application().connect(
-                    handle=win._hWnd).top_window().set_focus()
+                    handle=win._hWnd
+                ).top_window().set_focus()
             win.activate()  # 윈도우 활성화
         except Exception:
             print(Exception)
@@ -42,6 +33,7 @@ class ActionController(QObject):
         super().__init__()
         self.running = False
         self.core = mainCore()
+        self.screenCapture = ScreenCapture()
 
     def start(self, monitor):
         self.running = True
@@ -61,44 +53,13 @@ class ActionController(QObject):
         except Exception as e:
             print(e)
 
-    def captureImage(self, value, monitor = 0):
-        point = value.split(',')
-        if len(point) < 4:
-            raise Exception('Invalid capture point')
-        
-        with mss.mss() as sct:
-            screen_num = monitor
-            mon = sct.monitors[screen_num + 1]
-
-            monitor = {
-                "top": mon["top"] + int(point[1]),
-                "left": mon["left"] + int(point[0]),
-                "width": int(point[2]) - int(point[0]), 
-                "height": int(point[3]) - int(point[1]),
-                "mon": monitor
-            }
-            sct_img = sct.grab(monitor)
-            img = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
-
-            path = os.path.join(self.core.newFilePath())
-            img.save(path, "JPEG", quality=self.core.config['imageQuality'])
-
-        # JPG 추가 압축히기
-        # https: // github.com/wanadev/mozjpeg-lossless-optimization
-        with open(path, "rb") as input_jpeg_file:
-            input_jpeg_bytes = input_jpeg_file.read()
-
-        output_jpeg_bytes = mozjpeg_lossless_optimization.optimize(
-            input_jpeg_bytes)
-
-        with open(path, "wb") as output_jpeg_file:
-            output_jpeg_file.write(output_jpeg_bytes)
-
+    def captureImage(self, value, monitor=0):
+        path = self.screenCapture.shut(value, monitor)
         # 이미지 추가 메시지
         self.addImage.emit(path)
 
     def runAction(self, action, value):
-        if self.running == False:
+        if self.running is False:
             return
 
         if action == "capture":
@@ -109,9 +70,9 @@ class ActionController(QObject):
                 print(e)
         elif action == "click":
             try:
-                point = value.split(',')
+                point = value.split(",")
                 if len(point) < 2:
-                    raise Exception('Invalid click point')
+                    raise Exception("Invalid click point")
                     return
                 self.mouseMoveTo(value)
                 pydirectinput.click()
@@ -126,7 +87,7 @@ class ActionController(QObject):
             except Exception as e:
                 print(e)
         elif action == "scroll":
-            point = value.split(',')
+            point = value.split(",")
             self.mouseMoveTo(value)
             pyautogui.scroll(-20)
         # elif action == "swipeLeft":
@@ -145,9 +106,9 @@ class ActionController(QObject):
         #         x=(int(point[0]) + 50), y=int(point[1]), duration=0.2)
 
         self.actionDone.emit()
-    
+
     def mouseMoveTo(self, value):
-        point = value.split(',')
+        point = value.split(",")
         if len(point) < 2:
             return
         x = int(point[0])
@@ -160,7 +121,6 @@ class ActionController(QObject):
         x = x + mon["left"]
         y = y + mon["top"]
         pyautogui.moveTo(x, y, 0.05)
-
 
     def stopAction(self):
         self.running = False

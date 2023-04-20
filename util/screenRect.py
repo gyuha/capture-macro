@@ -5,22 +5,22 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
-'''
+"""
 Cannot import QScreen class in # Qt
 try:
     from PySide2.QtGui import QScreen
 except:
     from PyQt5.QtGui import QScreen
-'''
+"""
 import sys
 
 
 class ScreenRect(QWidget):
     selectedRect = pyqtSignal(int, int, int, int)
-    win = ''
+    win = ""
 
     @classmethod
-    def run(cls, monitor = 0):
+    def run(cls, monitor=0):
         cls.win = cls()
         cls.win.setRect(monitor)
         cls.win.show()
@@ -28,10 +28,10 @@ class ScreenRect(QWidget):
 
     def __init__(self, parent=None):
         super(ScreenRect, self).__init__(parent)
-    
+
     def setRect(self, monitor):
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
-        self.setStyleSheet('''background-color:black; ''')
+        self.setStyleSheet("""background-color:black; """)
         self.setWindowOpacity(0.4)
         # desktop = QApplication.desktop()
         # rect = desktop.availableGeometry()
@@ -62,10 +62,12 @@ class ScreenRect(QWidget):
         desktopRect = QDesktopWidget().screenGeometry()
         pp.begin(self)
         pp.setPen(QPen(Qt.red, 2))
-        pp.drawLine(0, self.currentPoint.y(),
-                    desktopRect.width(), self.currentPoint.y())
-        pp.drawLine(self.currentPoint.x(), 0,
-                    self.currentPoint.x(), desktopRect.height())
+        pp.drawLine(
+            0, self.currentPoint.y(), desktopRect.width(), self.currentPoint.y()
+        )
+        pp.drawLine(
+            self.currentPoint.x(), 0, self.currentPoint.x(), desktopRect.height()
+        )
         pp.end()
 
     def mousePressEvent(self, event):
@@ -86,14 +88,26 @@ class ScreenRect(QWidget):
             self.setMouseTracking(False)
             self.endPoint = event.pos()
 
-            x1 = self.startPoint.x() if self.startPoint.x(
-            ) < self.endPoint.x() else self.endPoint.x()
-            x2 = self.startPoint.x() if self.startPoint.x(
-            ) > self.endPoint.x() else self.endPoint.x()
-            y1 = self.startPoint.y() if self.startPoint.y(
-            ) < self.endPoint.y() else self.endPoint.y()
-            y2 = self.startPoint.y() if self.startPoint.y(
-            ) > self.endPoint.y() else self.endPoint.y()
+            x1 = (
+                self.startPoint.x()
+                if self.startPoint.x() < self.endPoint.x()
+                else self.endPoint.x()
+            )
+            x2 = (
+                self.startPoint.x()
+                if self.startPoint.x() > self.endPoint.x()
+                else self.endPoint.x()
+            )
+            y1 = (
+                self.startPoint.y()
+                if self.startPoint.y() < self.endPoint.y()
+                else self.endPoint.y()
+            )
+            y2 = (
+                self.startPoint.y()
+                if self.startPoint.y() > self.endPoint.y()
+                else self.endPoint.y()
+            )
 
             self.startPoint = QPoint()
             self.endPoint = QPoint()
@@ -104,7 +118,7 @@ class ScreenRect(QWidget):
             self.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # app = QApplication.instance() or QApplication(sys.argv)
     # WScreenShot.run()
     # app.exec_()
