@@ -55,7 +55,6 @@ class ScreenCapture:
 
         with mss.mss() as sct:
             monitor = sct.monitors[monitor_number]
-            print("📢[screenCapture.py:58]: ", monitor)
             capture_area = {
                 "left": monitor["left"] + x,
                 "top": monitor["top"] + y,
@@ -64,7 +63,6 @@ class ScreenCapture:
                 "mon": monitor_number,
             }
             sct_img = sct.grab(capture_area)
-            print("📢[screenCapture.py:58]: ", capture_area)
             img = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
 
             img.save(path, "JPEG", quality=self.core.config["imageQuality"])

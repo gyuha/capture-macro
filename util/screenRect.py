@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
+from screeninfo import get_monitors
+
 """
 Cannot import QScreen class in # Qt
 try:
@@ -12,6 +14,7 @@ try:
 except:
     from PyQt5.QtGui import QScreen
 """
+import screeninfo
 import sys
 
 
@@ -22,20 +25,34 @@ class ScreenRect(QWidget):
     @classmethod
     def run(cls, monitor=0):
         cls.win = cls()
-        cls.win.setRect(monitor)
+        cls.win.setRect(monitor - 1)
         cls.win.show()
         return cls.win
 
     def __init__(self, parent=None):
         super(ScreenRect, self).__init__(parent)
 
-    def setRect(self, monitor):
+    def get_screen_geometry(self, monitor: int) -> QRect:
+        app = QApplication.instance()
+        if not app:
+            app = QApplication([])
+        screens = app.screens()
+        if 0 <= monitor < len(screens):
+            screen = screens[monitor]
+            screen_geometry = screen.geometry()
+            return screen_geometry
+        else:
+            raise ValueError(f"Invalid monitor index: {monitor}")
+
+    def setRect(self, monitor_num):
+        monitors = get_monitors()
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.setStyleSheet("""background-color:black; """)
         self.setWindowOpacity(0.4)
         # desktop = QApplication.desktop()
         # rect = desktop.availableGeometry()
-        desktopRect = QDesktopWidget().screenGeometry(monitor)
+        monitor = monitors[monitor_num]
+        desktopRect = QRect(monitor.x, monitor.y, monitor.width, monitor.height)
         self.setGeometry(desktopRect)
         self.setCursor(Qt.CrossCursor)
         self.blackMask = QBitmap(desktopRect.size())
