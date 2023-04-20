@@ -1,17 +1,24 @@
+import ctypes
 import os
+
 import mozjpeg_lossless_optimization
+import mss
+import mss.tools
 import pyautogui
-
-from core import mainCore
-
+import win32gui
+from PIL import Image, ImageGrab
+from PyQt5.QtWidgets import QApplication
 from screeninfo import get_monitors
 
-from PIL import Image
+from core import mainCore
+from util.screensRatio import ScreensRatio
 
 
 class ScreenCapture:
     def __init__(self) -> None:
         self.core = mainCore()
+        self.screensRatio = ScreensRatio()
+        # self.get_monitors_scaling()
 
     def optimization(self, path):
         """_summary_
@@ -44,22 +51,24 @@ class ScreenCapture:
             print(f"Monitor {monitor_number} not found.")
             return
 
-        # 선택한 모니터의 위치 및 크기 가져오기
-        monitor = monitors[monitor_number - 1]
-        monitor_x, monitor_y, monitor_width, monitor_height = (
-            monitor.x,
-            monitor.y,
-            monitor.width,
-            monitor.height,
-        )
-
-        # 지정한 좌표와 크기로 캡쳐
-        screenshot = pyautogui.screenshot(
-            region=(monitor_x + x, monitor_y + y, width, height)
-        )
         path = os.path.join(self.core.newFilePath())
-        screenshot.save(path, format="JPEG", quality=self.core.config["imageQuality"])
 
-        self.optimization(path)
+        with mss.mss() as sct:
+            monitor = sct.monitors[monitor_number]
+            print("📢[screenCapture.py:58]: ", monitor)
+            capture_area = {
+                "left": monitor["left"] + x,
+                "top": monitor["top"] + y,
+                "width": width,
+                "height": height,
+                "mon": monitor_number,
+            }
+            sct_img = sct.grab(capture_area)
+            print("📢[screenCapture.py:58]: ", capture_area)
+            img = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
+
+            img.save(path, "JPEG", quality=self.core.config["imageQuality"])
+
+            self.optimization(path)
 
         return path
