@@ -4,12 +4,10 @@ import os
 import re
 import sys
 import time
+from functools import partial
 from pathlib import Path
-from libs.imageDiff import ImageDiff
-from util.screenRectCheck import ScreenRectCheck
 
 import keyboard
-
 import pyperclip
 from PIL import Image
 from PIL.ImageQt import ImageQt
@@ -17,15 +15,17 @@ from PyQt5 import QtCore, uic
 from PyQt5.QtCore import QDir, Qt, pyqtSlot
 from PyQt5.QtGui import QIcon, QImage, QIntValidator, QPixmap
 from PyQt5.QtWidgets import *
+from screeninfo import get_monitors
 
 import mainUi
 from actionController import ActionController
 from core import macroActions, mainCore
 from imageToPdfWorker import ImageToPdfWorker
 from libs.fileUtil import removePathFiles
+from libs.imageDiff import ImageDiff
 from util.screenPoint import ScreenPoint
 from util.screenRect import ScreenRect
-from functools import partial
+from util.screenRectCheck import ScreenRectCheck
 
 # form_class = uic.loadUiType("mainUi.ui")[0]
 
@@ -40,6 +40,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.imageQuality = 80
 
         self.setWindowIcon(QIcon("icon.ico"))
+        self.monitors = get_monitors()
 
         self.setConfigSet()
 
@@ -89,6 +90,8 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
 
         self.screenRectCheck = ScreenRectCheck()
 
+        self.startFileNumber()
+
         keyboard.add_hotkey("f5", self.clickStart)
         keyboard.add_hotkey("f2", self.clickStop)
 
@@ -132,8 +135,10 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         self.edtCapturePath.setText(self.core.config["capturePath"])
 
         self.onlyInt = QIntValidator()
-        self.leMonitor.setValidator(self.onlyInt)
-        self.leMonitor.setText(str(self.core.config["monitor"]))
+        # self.leMonitor.setValidator(self.onlyInt)
+        self.leMonitor.setMinimum(1)
+        self.leMonitor.setMaximum(len(self.monitors))
+        self.leMonitor.setValue(int(self.core.config["monitor"]))
         self.leSameCount.setValidator(self.onlyInt)
         self.leSameCount.setText(str(self.core.config["sameCount"]))
         self.lbImageQuality.setText(str(self.core.config["imageQuality"]))
@@ -333,6 +338,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                 self.actionController.captureImage(
                     self.macroTable.item(row, 1).text().strip(), self.monitorNum()
                 )
+        self.leCurrentCount.setText(str(self.core.fileNumber))
 
     def pil2pixmap(self, image):
         bytesImg = io.BytesIO()
@@ -358,6 +364,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
         files = [s for s in files if p.match(s)]
         if len(files) == 0:
             self.core.fileNumber = 0
+            self.leCurrentCount.setText(str(self.core.fileNumber))
             return
         basename = os.path.basename(files[-1])
         num = int(os.path.splitext(basename)[0])
@@ -494,6 +501,7 @@ class MainWindow(QMainWindow, mainUi.Ui_MainWindow):
                 self.startFileNumber()
             except Exception as e:
                 print(e)
+        self.startFileNumber()
 
 
 if __name__ == "__main__":

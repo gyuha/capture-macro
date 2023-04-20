@@ -1,10 +1,7 @@
 import os
 import mozjpeg_lossless_optimization
-import pygetwindow as gw
 import pyautogui
 
-import mss
-import mss.tools
 from core import mainCore
 
 from screeninfo import get_monitors

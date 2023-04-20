@@ -23,6 +23,7 @@
          <font>
           <family>Tahoma</family>
           <pointsize>16</pointsize>
+          <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
@@ -37,6 +38,7 @@
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
+            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -51,6 +53,7 @@
            <widget class="QLineEdit" name="edtCapturePath">
             <property name="font">
              <font>
+              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -66,6 +69,7 @@
            <widget class="QPushButton" name="btnPathSelect">
             <property name="font">
              <font>
+              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -83,6 +87,7 @@
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
+            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -99,6 +104,7 @@
              <widget class="QLabel" name="label_6">
               <property name="font">
                <font>
+                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -126,16 +132,6 @@
               <item row="0" column="0">
                <widget class="QLabel" name="label_8">
                 <property name="text">
-                 <string>모니터 번호</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLineEdit" name="leMonitor">
-                <property name="text">
-                 <string>0</string>
-                </property>
-                <property name="placeholderText">
                  <string>모니터 번호</string>
                 </property>
                </widget>
@@ -202,6 +198,9 @@
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QSpinBox" name="leMonitor"/>
               </item>
              </layout>
             </item>
@@ -272,6 +271,7 @@
           </property>
           <property name="font">
            <font>
+            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -339,6 +339,7 @@
          <widget class="QPushButton" name="btnCapture">
           <property name="font">
            <font>
+            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -351,6 +352,7 @@
          <widget class="QPushButton" name="btnStart">
           <property name="font">
            <font>
+            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -363,6 +365,7 @@
          <widget class="QPushButton" name="btnStop">
           <property name="font">
            <font>
+            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -379,6 +382,7 @@
      <widget class="Line" name="line">
       <property name="font">
        <font>
+        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -477,6 +481,7 @@
       </property>
       <property name="font">
        <font>
+        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
